@@ -1,0 +1,56 @@
+{
+  "version": 5,
+  "cmakeMinimumRequired": {
+      "major": 3,
+      "minor": 24,
+      "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "msvs-x64-Vulkan-default",
+      "hidden": true,
+      "displayName" : "VS 2022 on x64 using Vulkan",
+      "description": "Preset with Vulkan as Rendering API on x64 architecture using VS 17 2022",
+      "generator": "Visual Studio 17 2022",
+      "architecture": {
+        "value": "x64",
+        "strategy": "set"
+      },
+      "binaryDir": "${sourceDir}/Build/${presetName}",
+      "cacheVariables": {
+        "GRAPHICS_API": {
+          "type": "STRING",
+          "value": "VULKAN"
+        },
+        "CMAKE_CXX_COMPILER": "cl",
+        "CMAKE_CXX_STANDARD": "23",
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/Install/${presetName}"
+      }
+    },
+    {
+      "name": "msvs-x64-Vulkan",
+      "inherits": "msvs-x64-Vulkan-default",
+      "displayName" : "VS 2022 on x64 using Vulkan",
+      "description": "Preset with Vulkan as Rendering API on x64 architecture using VS 17 2022",
+      "binaryDir": "${sourceDir}/Build/${presetName}"
+    },
+    {
+      "name": "msvs-x64-DXR",
+      "hidden": true,
+      "displayName" : "VS 2022 on x64 using DirectX",
+      "description": "Preset with DirectX Ray Tracing as Rendering API on x64 architecture using VS 17 2022",
+      "generator": "Visual Studio 17 2022",
+      "architecture": {
+        "value": "x64",
+        "strategy": "set"
+      },
+      "binaryDir": "${sourceDir}/Build/${presetName}",
+      "cacheVariables": {
+        "GRAPHICS_API": {
+          "type": "STRING",
+          "value": "DXR"
+        }
+      }
+    }
+  ]
+}
