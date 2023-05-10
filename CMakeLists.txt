@@ -25,6 +25,12 @@ endif()
 #    CACHE STRING "" FORCE
 #)
 
+set(AVAILABLE_GRAPHICS_APIS
+    "VULKAN"
+    "OPENGL3"
+    CACHE STRING "" FORCE
+)
+
 ################################################################################
 # Nuget packages function stub.
 ################################################################################
@@ -71,7 +77,7 @@ endif()
 
 if(GRAPHICS_API STREQUAL "VULKAN")
     add_subdirectory(VulkanRendering)
-elseif(GRAPHICS_API STREQUAL "OpenGL")
+elseif(GRAPHICS_API STREQUAL "OpenGL3")
     add_subdirectory(OpenGLRendering)
 endif()
 
