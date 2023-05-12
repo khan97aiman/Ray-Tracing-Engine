@@ -9,7 +9,7 @@
 #include <imgui_impl_opengl3.h>
 #endif // _WIN32
 
-namespace NCL::CSC8508 {
+namespace NCL::CSC8599 {
 	enum class ScreenType {
 		None,
 		SplashScreen,

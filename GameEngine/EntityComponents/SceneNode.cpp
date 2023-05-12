@@ -2,7 +2,7 @@
 #include "GameWorld.h"
 
 using namespace NCL;
-using namespace CSC8508;
+using namespace CSC8599;
 
 SceneNode::SceneNode(MeshGeometry* mesh, ShaderBase* shader, TextureBase* texture) {
 	SetRenderObject(mesh, shader, texture);

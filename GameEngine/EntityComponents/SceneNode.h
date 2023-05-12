@@ -4,7 +4,7 @@
 namespace NCL {
 	class Camera;
 }
-namespace NCL::CSC8508 {
+namespace NCL::CSC8599 {
 	class GameWorld;
 	typedef std::function<void(Camera*)> CameraFunc;
 	class SceneNode {

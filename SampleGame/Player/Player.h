@@ -9,7 +9,7 @@
 
 namespace NCL {
 	using namespace Rendering;
-	using namespace CSC8508;
+	using namespace CSC8599;
 	class Player : public PlayerBase {
 	public:
 		//TextureBase Constructor

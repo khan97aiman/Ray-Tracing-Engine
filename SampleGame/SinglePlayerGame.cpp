@@ -3,7 +3,7 @@
 #include "PlayerControllers.h"
 
 using namespace NCL;
-using namespace CSC8508;
+using namespace CSC8599;
 
 SinglePlayerGame::SinglePlayerGame(GameAssets * assets) : PaintingGame(assets) {
 		GameManager::sConfig.playerControllerFactory = new Win32PlayerControllerFactory();

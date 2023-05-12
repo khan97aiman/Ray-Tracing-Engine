@@ -4,7 +4,7 @@
 
 namespace NCL {
 	using namespace NCL::Maths;
-	namespace CSC8508 {
+	namespace CSC8599 {
 		class NavigationPath		{
 		public:
 			NavigationPath() {}

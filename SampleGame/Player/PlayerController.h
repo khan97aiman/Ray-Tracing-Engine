@@ -3,7 +3,7 @@
 
 namespace NCL {
 	using namespace Rendering;
-	using namespace CSC8508;
+	using namespace CSC8599;
 	class PlayerController {
 	public:
 		PlayerController(Player* player);

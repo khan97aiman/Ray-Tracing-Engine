@@ -5,7 +5,7 @@
 #include "GameOverScreen.h"
 
 using namespace NCL;
-using namespace CSC8508;
+using namespace CSC8599;
 
 
 ScreenManager::ScreenManager(GameAssets* assets) {
@@ -25,7 +25,7 @@ void ScreenManager::LoadScreens() {
 	screens.insert(std::make_pair(ScreenType::GameScreen, std::make_unique<GameScreen>(this)));
 }
 
-BaseScreen* NCL::CSC8508::ScreenManager::GetScreen(ScreenType screenType) const {
+BaseScreen* NCL::CSC8599::ScreenManager::GetScreen(ScreenType screenType) const {
 	return screens.count(screenType) ? screens.at(screenType).get() : nullptr;
 }
 

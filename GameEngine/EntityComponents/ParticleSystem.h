@@ -8,7 +8,7 @@
 
 namespace NCL {
 	using namespace Maths;
-	using namespace CSC8508;
+	using namespace CSC8599;
 
 	class Emitter {
 	public:
@@ -157,7 +157,7 @@ namespace NCL {
 
 		emitter.SetTransform(&transform);
 
-		renderObject = new CSC8508::RenderObject(transforms, mesh, shader);
+		renderObject = new CSC8599::RenderObject(transforms, mesh, shader);
 		renderObject->SetInstanceCount(particles.size());
 		renderObject->SetIsInstanced(true);
 

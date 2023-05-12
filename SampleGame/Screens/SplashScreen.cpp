@@ -2,7 +2,7 @@
 #include "Debug.h"
 
 using namespace NCL;
-using namespace CSC8508;
+using namespace CSC8599;
 
 void SplashScreen::MenuFrame() {
 #ifdef _WIN32

@@ -9,7 +9,7 @@
 
 namespace NCL {
 	using namespace Rendering;
-	namespace CSC8508 {
+	namespace CSC8599 {
 		struct GridNode {
 			GridNode* parent;
 

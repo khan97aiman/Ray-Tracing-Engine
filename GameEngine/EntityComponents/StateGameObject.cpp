@@ -4,7 +4,7 @@
 #include "State.h"
 
 using namespace NCL;
-using namespace CSC8508;
+using namespace CSC8599;
 
 StateGameObject::StateGameObject(reactphysics3d::PhysicsCommon& physicsCommon, reactphysics3d::PhysicsWorld* physicsWorld): GameObject(physicsCommon, physicsWorld) {
 	counter = 2.0f;

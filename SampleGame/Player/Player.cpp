@@ -2,7 +2,7 @@
 #include <Debug.h>
 
 using namespace NCL;
-using namespace CSC8508;
+using namespace CSC8599;
 
 void Player::Update(float dt) {
 	PlayerBase::Update(dt);

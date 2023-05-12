@@ -9,7 +9,7 @@
 namespace NCL {
 	using namespace Maths;
 
-	namespace CSC8508 {
+	namespace CSC8599 {
 		class Transform
 		{
 		public:

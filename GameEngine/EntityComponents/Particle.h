@@ -4,7 +4,7 @@
 
 namespace NCL {
 	using namespace Maths;
-	using namespace CSC8508;
+	using namespace CSC8599;
 
 	//making particle's constructor protected so it can't be instantiated on its own
 	class Particle : public GameObject {

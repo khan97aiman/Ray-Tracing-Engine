@@ -3,7 +3,7 @@
 
 #include "OGLTexture.h"
 
-using namespace NCL::CSC8508;
+using namespace NCL::CSC8599;
 using namespace NCL;
 
 RenderObject::RenderObject(Transform* parentTransform, MeshGeometry* mesh, ShaderBase* shader) {

@@ -3,7 +3,7 @@
 #include "NetworkObject.h"
 #include <Debug.h>
 
-using namespace NCL::CSC8508;
+using namespace NCL::CSC8599;
 
 GameObject::GameObject(reactphysics3d::PhysicsCommon& physicsCommon, reactphysics3d::PhysicsWorld* physicsWorld, string objectName): physicsCommon(physicsCommon), physicsWorld(physicsWorld) {
 	name			= objectName;
@@ -25,7 +25,7 @@ void GameObject::UpdateTransform() {
 	}
 }
 
-//void NCL::CSC8508::GameObjectListener::onTrigger(const reactphysics3d::OverlapCallback::CallbackData& callbackData)
+//void NCL::CSC8599::GameObjectListener::onTrigger(const reactphysics3d::OverlapCallback::CallbackData& callbackData)
 //{
 //	for (int p = 0; p < callbackData.getNbOverlappingPairs(); p++) 
 //	{

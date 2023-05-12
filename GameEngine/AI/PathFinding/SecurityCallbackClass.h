@@ -6,7 +6,7 @@ namespace NCL {
     using namespace reactphysics3d;
 	class SecurityCallbackClass : public RaycastCallback {
     public:
-        SecurityCallbackClass(CSC8508::GameObject* player) {
+        SecurityCallbackClass(CSC8599::GameObject* player) {
             this->player = player;
         }
 
@@ -33,7 +33,7 @@ namespace NCL {
             playerDistance = 1.0;
         }
     protected:
-        CSC8508::GameObject* player;
+        CSC8599::GameObject* player;
         float closestObject = 1.0;
         float playerDistance = 1.0;
 

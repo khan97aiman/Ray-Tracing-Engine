@@ -2,7 +2,7 @@
 #include "GameObject.h"
 
 using namespace NCL;
-using namespace CSC8508;
+using namespace CSC8599;
 
 //Mesh Material Constructor
 AnimatedObject::AnimatedObject(reactphysics3d::PhysicsCommon& physicsCommon, reactphysics3d::PhysicsWorld* physicsWorld, Vector3 position, 

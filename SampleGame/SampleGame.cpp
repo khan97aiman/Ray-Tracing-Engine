@@ -12,7 +12,7 @@
 #include "GameScreen.h"
 
 using namespace NCL;
-using namespace CSC8508;
+using namespace CSC8599;
 
 PaintingGame::PaintingGame(GameAssets* assets) {
 	this->assets = assets;

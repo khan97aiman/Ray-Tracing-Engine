@@ -3,7 +3,7 @@
 #include <PlayerController.h>
 
 namespace NCL {
-	namespace CSC8508 {
+	namespace CSC8599 {
 
 		class SinglePlayerGame : public PaintingGame {
 		public:

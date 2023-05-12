@@ -1,7 +1,7 @@
 #include "PushdownMachine.h"
 #include "PushdownState.h"
 
-using namespace NCL::CSC8508;
+using namespace NCL::CSC8599;
 
 PushdownMachine::PushdownMachine(PushdownState* initialState)
 {

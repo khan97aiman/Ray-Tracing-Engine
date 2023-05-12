@@ -4,9 +4,9 @@
 
 namespace NCL {
 	using namespace Rendering;
-	using namespace CSC8508;
+	using namespace CSC8599;
 
-//	namespace CSC8508 { class GameObject; }
+//	namespace CSC8599 { class GameObject; }
 	class AnimatedObject : public GameObject {
 	public:
 		//Mesh Material Constructor

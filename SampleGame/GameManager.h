@@ -4,7 +4,7 @@
 #include "GameAssets.h"
 #include <PushdownMachine.h>
 
-namespace NCL::CSC8508 {
+namespace NCL::CSC8599 {
 	class GameManager {
 	public:
 		GameManager(Window* window);

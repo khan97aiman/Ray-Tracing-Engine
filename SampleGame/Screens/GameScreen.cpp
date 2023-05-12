@@ -4,11 +4,11 @@
 #include "Window.h"
 
 using namespace NCL;
-using namespace CSC8508;
+using namespace CSC8599;
 
 bool GameScreen::sPauseCallback = false;
 
-void NCL::CSC8508::GameScreen::OnAwake()
+void NCL::CSC8599::GameScreen::OnAwake()
 {
 	isMenuDisplayed = false;
 	isDebugDisplayed = false;
@@ -24,7 +24,7 @@ void NCL::CSC8508::GameScreen::OnAwake()
 	}
 }
 
-void NCL::CSC8508::GameScreen::OnSleep()
+void NCL::CSC8599::GameScreen::OnSleep()
 {
 	delete sceneNode;
 	sceneNode = nullptr;

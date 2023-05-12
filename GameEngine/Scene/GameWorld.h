@@ -5,7 +5,7 @@
 #include <tuple>
 
 namespace NCL {
-	namespace CSC8508 {
+	namespace CSC8599 {
 		class GameObject;
 		class Constraint;
 		class GameEventListener;

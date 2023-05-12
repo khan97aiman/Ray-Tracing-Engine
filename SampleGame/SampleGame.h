@@ -11,7 +11,7 @@
 #include "HudElement.h"
 
 namespace NCL {
-	namespace CSC8508 {
+	namespace CSC8599 {
 		class PaintingGame : public SceneNode {
 		public:
 			PaintingGame(GameAssets* assets);

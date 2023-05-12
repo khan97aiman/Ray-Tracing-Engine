@@ -11,7 +11,7 @@ namespace NCL {
 	class MeshAnimation;
 	class PlayerBase;
 	class AnimatedObject;
-	namespace CSC8508 {
+	namespace CSC8599 {
 		class AnimationController : public StateMachine {
 		public:
 			AnimationController(/*PlayerBase**/AnimatedObject* gameObject, const std::unordered_map<std::string, MeshAnimation*>& animations);

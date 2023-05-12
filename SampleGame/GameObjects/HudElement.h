@@ -8,7 +8,7 @@
 
 namespace NCL {
 	using namespace Rendering;
-	using namespace CSC8508;
+	using namespace CSC8599;
 	class HudElement : public GameObject {
 	public:
 		HudElement(reactphysics3d::PhysicsCommon& physicsCommon, reactphysics3d::PhysicsWorld* physicsWorld, Vector2 position, MeshGeometry* mesh, TextureBase* texture, ShaderBase* shader, Vector2 scale) : GameObject(physicsCommon, physicsWorld, "HUD") {
@@ -16,7 +16,7 @@ namespace NCL {
 				.SetScale(scale)
 				.SetPosition(position);
 
-			renderObject = new CSC8508::RenderObject(&transform, mesh, shader);
+			renderObject = new CSC8599::RenderObject(&transform, mesh, shader);
 			renderObject->SetDefaultTexture(texture);
 			renderObject->SetIsOccluded(false);
 		}

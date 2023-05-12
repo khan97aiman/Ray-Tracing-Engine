@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 namespace NCL {
-	namespace CSC8508 {
+	namespace CSC8599 {
 
 		struct PortalEdge {
 			Vector3 leftPortal;

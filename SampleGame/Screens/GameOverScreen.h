@@ -3,7 +3,7 @@
 #include <string>
 
 namespace NCL {
-	namespace CSC8508 {
+	namespace CSC8599 {
 		class GameOverScreen : public BaseScreen
 		{
 		public:

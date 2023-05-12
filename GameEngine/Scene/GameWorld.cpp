@@ -3,7 +3,7 @@
 #include "Camera.h"
 #include <chrono>
 using namespace NCL;
-using namespace NCL::CSC8508;
+using namespace NCL::CSC8599;
 
 rp3d::decimal RaycastManager::notifyRaycastHit(const rp3d::RaycastInfo& raycastInfo) {
 	if (ignoreBody == raycastInfo.body) { return -1; }

@@ -6,7 +6,7 @@
 
 
 using namespace NCL;
-using namespace CSC8508;
+using namespace CSC8599;
 
 /* Only Required for PS4 */
 unsigned int sceLibcHeapExtendedAlloc = 1;			/* Switch to dynamic allocation */
