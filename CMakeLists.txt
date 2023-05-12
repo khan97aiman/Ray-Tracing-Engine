@@ -70,6 +70,7 @@ add_compile_definitions(ASSETROOTLOCATION="${ASSET_ROOT}")
 # Sub-projects
 ################################################################################
 add_subdirectory(GameEngine)
+add_subdirectory(GUI)
 
 if(BUILD_NETWORKING)
     add_subdirectory(Networking)
@@ -77,8 +78,10 @@ endif()
 
 if(GRAPHICS_API STREQUAL "VULKAN")
     add_subdirectory(VulkanRendering)
-elseif(GRAPHICS_API STREQUAL "OpenGL3")
+    add_compile_definitions(VULKAN)
+elseif(GRAPHICS_API STREQUAL "OPENGL3")
     add_subdirectory(OpenGLRendering)
+    add_compile_definitions(OPENGL3)
 endif()
 
 add_subdirectory(SampleGame)

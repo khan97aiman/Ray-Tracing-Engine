@@ -48,7 +48,7 @@
       "cacheVariables": {
         "GRAPHICS_API": {
           "type": "STRING",
-          "value": "OpenGL3"
+          "value": "OPENGL3"
         },
         "CMAKE_CXX_COMPILER": "cl",
         "CMAKE_CXX_STANDARD": "23",

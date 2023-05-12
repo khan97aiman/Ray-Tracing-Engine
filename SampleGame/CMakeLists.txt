@@ -8,20 +8,18 @@ set(Header_Files
     "SinglePlayerGame.h"
     "SampleGame.h"
     "GameManager.h"
-    "PlatformConfigurations.h"
+    "Configurations.h"
     "GameAssets.h"
     "NetworkedGame.h"
     "NetworkPlayer.h"
-    "EventListener.h"
 )
 else()
 set(Header_Files
     "SinglePlayerGame.h"
     "SampleGame.h"
     "GameManager.h"
-    "PlatformConfigurations.h"
+    "Configurations.h"
     "GameAssets.h"
-    "EventListener.h"
 )
 endif()
 source_group("Header Files" FILES ${Header_Files})
@@ -35,7 +33,6 @@ set(Source_Files
     "GameAssets.cpp"
     "NetworkedGame.cpp"
     "NetworkPlayer.cpp"
-    "EventListener.cpp"
 )
 else()
 set(Source_Files
@@ -44,7 +41,6 @@ set(Source_Files
     "SampleGame.cpp"
     "GameManager.cpp"
     "GameAssets.cpp"
-    "EventListener.cpp"
 )
 endif()
 
@@ -56,12 +52,6 @@ set(GameObjects
     "./GameObjects/Ink.h"
     "./GameObjects/HudElement.h"
     "./GameObjects/HudElement.cpp"
-    "./GameObjects/Gun.h"
-    "./GameObjects/SecurityGuard.h"
-    "./GameObjects/SecurityGuard.cpp"
-    "./GameObjects/Wall.h"
-    "./GameObjects/MuseumItem.h"
-    "./GameObjects/HUDOnLoad.h"
 )
 source_group("Game Objects" FILES ${GameObjects})
 
@@ -92,26 +82,6 @@ set(Screens
 )
 source_group("Screens" FILES ${Screens})
 
-set(ImGui
-    "../Middleware/ImGui/imgui.cpp"
-    "../Middleware/ImGui/imgui.h"
-    "../Middleware/ImGui/imgui_demo.cpp"
-    "../Middleware/ImGui/imgui_draw.cpp"
-    "../Middleware/ImGui/imgui_impl_opengl3.cpp"
-    "../Middleware/ImGui/imgui_impl_opengl3.h"
-    "../Middleware/ImGui/imgui_impl_opengl3_loader.h"
-    "../Middleware/ImGui/imgui_impl_win32.cpp"
-    "../Middleware/ImGui/imgui_impl_win32.h"
-    "../Middleware/ImGui/imgui_internal.h"
-    "../Middleware/ImGui/imgui_widgets.cpp" 
-    "../Middleware/ImGui/imgui_tables.cpp" 
-    "../Middleware/ImGui/imstb_rectpack.h" 
-    "../Middleware/ImGui/imstb_textedit.h" 
-    "../Middleware/ImGui/imstb_truetype.h" 
-    "../Middleware/ImGui/imconfig.h" 
-)
-source_group("ImGui Files" FILES ${ImGui})
-
 set(ALL_FILES
     ${Header_Files}
     ${Source_Files}
@@ -119,7 +89,6 @@ set(ALL_FILES
     ${Player}
     ${Renderers}
     ${Screens}
-    ${ImGui}
 )
 
 ################################################################################
@@ -158,11 +127,27 @@ target_precompile_headers(${PROJECT_NAME} PRIVATE
     <string>
     <list>
     <thread>
-     <atomic>
+    <atomic>
     <functional>
     <iostream>
     <set>
 )
+
+if(GRAPHICS_API STREQUAL "VULKAN")
+    target_precompile_headers(${PROJECT_NAME} PRIVATE
+       # "../OpenGLRendering/OGLAssetLoader.h"
+       # "../OpenGLRendering/OGLRenderer.h"
+        "./GUI/ImGuiInterface_VulkanWin32.h"
+    )
+elseif(GRAPHICS_API STREQUAL "OPENGL3")
+    target_precompile_headers(${PROJECT_NAME} PRIVATE
+        "../OpenGLRendering/OGLAssetLoader.h"
+        "../OpenGLRendering/OGLRenderer.h"
+        "../GUI/ImGuiInterface_OpenGL3Win32.h"
+    )
+    #add specific rendererer here
+endif()
+
 
 ################################################################################
 # Compile and link options
@@ -179,7 +164,6 @@ if(MSVC)
         /W3;
         ${DEFAULT_CXX_DEBUG_INFORMATION_FORMAT};
         ${DEFAULT_CXX_EXCEPTION_HANDLING};
-        /Y-
     )
     target_link_options(${PROJECT_NAME} PRIVATE
         $<$<CONFIG:Release>:
@@ -225,7 +209,6 @@ include_directories("../GameEngine/Graphics/Renderer/")
 include_directories("../GameEngine/Graphics/Renderer/RenderingSupport/")
 include_directories("../GameEngine/Graphics/Camera/")
 include_directories("../GameEngine/Graphics/Lights/")
-include_directories("../GameEngine/Graphics/UI/")
 include_directories("../GameEngine/Debugging/")
 include_directories("../GameEngine/AssetsHandling/")
 include_directories("../GameEngine/AI/BehaviorTrees/")
@@ -233,16 +216,18 @@ include_directories("../GameEngine/AI/PathFinding/")
 include_directories("../GameEngine/AI/PushdownAutomata/")
 include_directories("../GameEngine/AI/StateMachine/")
 include_directories("../Middleware/ImGui/")
+include_directories("../GUI/")
 
 ################################################################################
 # Link appropriate project libs
 ################################################################################
 target_link_libraries(${PROJECT_NAME} LINK_PUBLIC GameEngine)
+target_link_libraries(${PROJECT_NAME} LINK_PUBLIC GUI)
 
 if(GRAPHICS_API STREQUAL "VULKAN")
     include_directories("../VulkanRendering/")
     target_link_libraries(${PROJECT_NAME} LINK_PUBLIC VulkanRendering)
-elseif(GRAPHICS_API STREQUAL "OpenGL")
+elseif(GRAPHICS_API STREQUAL "OPENGL3")
     include_directories("../OpenGLRendering/")
     target_link_libraries(${PROJECT_NAME} LINK_PUBLIC OpenGLRendering)
 endif()

@@ -63,11 +63,6 @@ PushdownState::PushdownResult GameScreen::OnUpdate(float dt, PushdownState** new
 		sPauseCallback = false;
 	}
 
-	if (sceneNode && ((PaintingGame*)sceneNode)->GetTimeOver())
-	{
-		command = ScreenCommand::TransitionToNextScreen;
-	}
-
 
 	return BaseScreen::OnUpdate(dt, newState);
 }
@@ -102,7 +97,7 @@ PushdownState::PushdownResult GameScreen::onStateChange(PushdownState** newState
 	switch (command) {
 		case ScreenCommand::TransitionToNextScreen:
 			*newState = screenManager->GetScreen(ScreenType::GameOverScreen);
-			((GameOverScreen*)*newState)->SetWinner(((PaintingGame*)sceneNode)->GetWinner());
+			//((GameOverScreen*)*newState)->SetWinner(((PaintingGame*)sceneNode)->GetWinner());
 			return PushdownResult::Push;
 		case ScreenCommand::TransitionToPreviousScreen:
 			return PushdownResult::Pop;

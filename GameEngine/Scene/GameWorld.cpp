@@ -31,7 +31,6 @@ GameWorld::GameWorld(reactphysics3d::PhysicsWorld* physicsWorld)	{
 	shuffleObjects		= false;
 	worldIDCounter		= 0;
 	worldStateCounter	= 0;
-	paintedPositions.reserve(1000);
 }
 
 GameWorld::~GameWorld()	{
@@ -80,13 +79,6 @@ void GameWorld::GetObjectIterators(
 void GameWorld::OperateOnContents(GameObjectFunc f) {
 	for (GameObject* g : gameObjects) {
 		f(g);
-	}
-}
-
-void GameWorld::OperateOnPaintedPositions(Vector3and4Func f) {
-	int index = 0;
-	for (auto& splat : paintedPositions) {
-		f(index++, splat.position, splat.colour);
 	}
 }
 
@@ -153,75 +145,4 @@ SceneContactPoint* GameWorld::Raycast(const reactphysics3d::Ray& r, GameObject* 
 double GetDistance(Vector3 vec1, Vector3 vec2)
 {
 	return std::sqrt(std::pow((vec1.x - vec2.x), 2) + std::pow((vec1.y - vec2.y), 2) + std::pow((vec1.z - vec2.z), 2));
-}
-
-void GameWorld::AddPaintedPosition(const Vector3& position, Vector4 team) {
-	Vector4 colour;
-	if (team == RedTeamColour) {
-		colour = RedTeamColour;
-	} 
-	else if (team == BlueTeamColour) {
-		colour = BlueTeamColour;
-	}
-	for (int i = 0; i < GetNumPaintedPositions(); i++)
-	{
-		PaintSplat element = paintedPositions[i];
-		if ((element.colour == colour && element.position == position)) {
-			return;
-		}
-		else if (element.colour == colour && GetDistance(element.position, position) < 2) {
-			return;
-		}
-		else if (element.colour != colour && GetDistance(element.position, position) < 5) {
-			if (colour == RedTeamColour) {
-				element.colour = RedTeamColour;
-			}
-			else {
-				element.colour = BlueTeamColour;
-			}
-			splatsToChangeColour.push_back({ i, element.colour });
-			return;
-		}
-	}
-	paintedPositions.push_back(PaintSplat(position, colour));
-}
-
-bool GameWorld::CleanNearbyPaint(Vector3 SecurityPos, float range)
-{
-	bool hasCleaned = false;
-	for (auto paintPos = paintedPositions.begin(); paintPos != paintedPositions.end();)
-	{
-		float distance = (SecurityPos - paintPos->position).Length();
-		if (distance < range)
-		{
-			paintPos = paintedPositions.erase(paintPos);
-			hasCleaned = true;
-		}
-		else
-		{
-			paintPos++;
-		}
-
-	}
-	return hasCleaned;
-}
-
-Vector3 GameWorld::FindClosestPaintSplat(Vector3 position)
-{
-	Vector3 paintPos;
-	float min = FLT_MAX;
-	for (auto i : paintedPositions)
-	{
-		float distance = (i.position - position).Length();
-		if (distance < min && i.position.y < 10)
-		{
-			paintPos = i.position;
-		}
-	}
-	return paintPos;
-}
-
-int GameWorld::GetSizePaintedPositions()
-{
-	return paintedPositions.size();
 }

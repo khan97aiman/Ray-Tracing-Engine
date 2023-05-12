@@ -62,27 +62,16 @@ void GameAssets::LoadMeshes() {
 
 void GameAssets::LoadMeshMaterials() {
 	meshMaterials.insert(std::make_pair("redMainCharMat", loader->LoadMeshMaterial("red_Aj_TPose.mat")));
-	meshMaterials.insert(std::make_pair("blueMainCharMat", loader->LoadMeshMaterial("blue_Aj_TPose.mat")));
-	meshMaterials.insert(std::make_pair("monaLisaMat", loader->LoadMeshMaterial("MonaLisa.mat")));
-	meshMaterials.insert(std::make_pair("handsPaintingMat", loader->LoadMeshMaterial("handsPainting.mat")));
-	meshMaterials.insert(std::make_pair("nightSkyMat", loader->LoadMeshMaterial("nightSky.mat")));
-	meshMaterials.insert(std::make_pair("screamPaintMat", loader->LoadMeshMaterial("screamPaint.mat")));
-	meshMaterials.insert(std::make_pair("sunflowersMat", loader->LoadMeshMaterial("sunflowers.mat")));
-	meshMaterials.insert(std::make_pair("gunMat", loader->LoadMeshMaterial("PaintingGun.mat")));
-	meshMaterials.insert(std::make_pair("AiMat", loader->LoadMeshMaterial("X_Bot.mat")));
 }
 
 void GameAssets::LoadMeshAnimations() {
 	meshAnimations.insert(std::make_pair("mainCharTauntAnim", std::make_unique<MeshAnimation>("Taunt.anm")));
 	meshAnimations.insert(std::make_pair("mainCharIdleAnim", std::make_unique<MeshAnimation>("AJIdle.anm")));
 	meshAnimations.insert(std::make_pair("mainCharRunAnim", std::make_unique<MeshAnimation>("AJRun.anm")));
-	meshAnimations.insert(std::make_pair("AiIdleAnim", std::make_unique<MeshAnimation>("XBot_Idle.anm")));
-	meshAnimations.insert(std::make_pair("AiRunAnim", std::make_unique<MeshAnimation>("XBot_Running.anm")));
 }
 
 void GameAssets::LoadTextures() {
-	textures.insert(std::make_pair("basicTex", loader->LoadTexture("WhiteMarble.jpg")));
-//	textures.insert(std::make_pair("basicTex", loader->LoadTexture("checkerboard.png")));
+	textures.insert(std::make_pair("basicTex", loader->LoadTexture("checkerboard.png")));
 	textures.insert(std::make_pair("loadingTex", loader->LoadTexture("loadingSprites.png")));
 	textures.insert(std::make_pair("gunFocusTex", loader->LoadTexture("gunFocusPoint.png")));
 	textures.insert(std::make_pair("splashScreenTex", loader->LoadTexture("Screens/bg.png"))); 
@@ -112,28 +101,4 @@ void GameAssets::LoadShaders() {
 	shaders.insert(std::make_pair("debugShader", loader->LoadShader("screen_vv.sb", "simplePixel_p.sb")));
 	shaders.insert(std::make_pair("hudShader", loader->LoadShader("hud_vv.sb", "simplePixel_p.sb")));
 #endif // __ORBIS__
-}
-
-void GameAssets::ReloadMeshes()
-{
-	meshes.clear();
-	LoadMeshes();
-}
-void GameAssets::ReloadShaders()
-{
-
-	for (auto& pair : shaders)
-	{
-		if (pair.second)
-		{
-			pair.second->ReloadShader();
-		}
-	}
-	//shaders.clear();
-	//LoadShaders();
-}
-void GameAssets::ReloadDebug()
-{
-	shaders.erase("debugShader");
-	shaders.insert(std::make_pair("debugShader", loader->LoadShader("Debug.vert", "Debug.frag")));
 }

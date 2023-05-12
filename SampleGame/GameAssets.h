@@ -19,10 +19,6 @@ namespace NCL {
 		TextureBase* GetTexture(const std::string& identifier) const;
 		ShaderBase* GetShader(const std::string& identifier) const;
 
-		void ReloadMeshes();
-		void ReloadShaders();
-		void ReloadDebug();
-
 		void Load();
 	protected:
 		Assets::AssetLoader* loader;

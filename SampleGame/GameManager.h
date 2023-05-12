@@ -1,6 +1,6 @@
 #pragma once
 #include "ScreenManager.h"
-#include "PlatformConfigurations.h"
+#include "Configurations.h"
 #include "GameAssets.h"
 #include <PushdownMachine.h>
 
@@ -11,7 +11,7 @@ namespace NCL::CSC8508 {
 		~GameManager();
 		bool RunGame(float dt);
 
-		static PlatformConfigurations sConfig;
+		static Configurations sConfig;
 	protected:
 
 		RendererBase* renderer;

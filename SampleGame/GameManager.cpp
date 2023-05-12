@@ -5,14 +5,14 @@
 using namespace NCL;
 using namespace CSC8508;
 
-PlatformConfigurations GameManager::sConfig = PlatformConfigurations();
+Configurations GameManager::sConfig = Configurations();
 
 GameManager::GameManager(Window* window) {
 	renderer = sConfig.rendererFactory->createRenderer(*window);
 	assetLoader = sConfig.assetLoaderFactory->createAssetLoader();
 	gameAssets = new GameAssets(assetLoader);
 	screenManager = new ScreenManager(gameAssets);
-	renderer->BindDebugShader(gameAssets->GetShader("debugShader"));
+	renderer->BindDebugShader(gameAssets->GetShader("debugShader")); //find a way to omit this
 }
 
 GameManager::~GameManager() {
