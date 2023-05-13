@@ -3,11 +3,7 @@
 #include "SceneNode.h"
 #include "PushdownState.h"
 #include "PushdownMachine.h"
-#include <unordered_map>
-#ifdef _WIN32
-#include <imgui_impl_win32.h>
-#include <imgui_impl_opengl3.h>
-#endif // _WIN32
+#include <GuiInterface.h>
 
 namespace NCL::CSC8599 {
 	enum class ScreenType {
@@ -42,6 +38,7 @@ namespace NCL::CSC8599 {
 		std::unordered_map<ScreenType, std::unique_ptr<SceneNode>> screenSceneNodes;
 		GameAssets* assets;
 		std::unique_ptr<PushdownMachine> machine;
+		GuiInterface* guiInterface;
 	};
 	class BaseScreen : public PushdownState
 	{
@@ -55,18 +52,13 @@ namespace NCL::CSC8599 {
 		SceneNode* GetSceneNode() const { return sceneNode; }
 		ScreenType GetScreenType() const { return screenType; }
 		void RenderMenu();
-		virtual void TransitionTimer(float dt) {}
 	protected:
 		virtual void MenuFrame() = 0;
-		virtual void DebugWindow() {};
 		virtual PushdownResult onStateChange(PushdownState** newState) = 0;
 		SceneNode* sceneNode = NULL;
 		bool isMenuDisplayed = true;
-		bool isDebugDisplayed = true;
 		ScreenCommand command = ScreenCommand::None;
 		ScreenManager* screenManager;
 		ScreenType screenType = ScreenType::None;
-		float totalTime = 0;
-		bool bisNetworkedGame = false;
 	};
 }

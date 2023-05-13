@@ -4,10 +4,10 @@
 namespace NCL {
 	class ImGuiInterface_OpenGl3Win32 : public GuiInterface {
 	public:
-		virtual void Init() override;
+		ImGuiInterface_OpenGl3Win32();
 		virtual void ProcessEvents() override;
 		virtual void Render(std::function<void()> windowFunc) override;
-		virtual void CleanUp() override;
+		virtual ~ImGuiInterface_OpenGl3Win32() override;
 	};
 
 	class ImGuiFactory_OpenGL3Win32 : public GuiFactory {

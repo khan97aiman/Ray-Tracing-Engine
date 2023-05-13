@@ -64,8 +64,15 @@ set(Player
 )
 source_group("Player" FILES ${Player})
 
-set(Renderers
-)
+if(GRAPHICS_API STREQUAL "VULKAN")
+    set(Renderers
+    )
+elseif(GRAPHICS_API STREQUAL "OPENGL3")
+    set(Renderers
+    "./Renderers/OGLSampleGameRenderer.h"
+    "./Renderers/OGLSampleGameRenderer.cpp"
+    )
+endif()
 source_group("Renderers" FILES ${Renderers})
 
 set(Screens
@@ -75,8 +82,6 @@ set(Screens
     "./Screens/MainMenuScreen.cpp" 
     "./Screens/GameScreen.h"
     "./Screens/GameScreen.cpp" 
-    "./Screens/GameOverScreen.h"
-    "./Screens/GameOverScreen.cpp" 
     "./Screens/ScreenManager.h"
     "./Screens/ScreenManager.cpp"
 )
@@ -131,6 +136,7 @@ target_precompile_headers(${PROJECT_NAME} PRIVATE
     <functional>
     <iostream>
     <set>
+    "../GameEngine/Debugging/Debug.h"
 )
 
 if(GRAPHICS_API STREQUAL "VULKAN")
@@ -142,7 +148,7 @@ if(GRAPHICS_API STREQUAL "VULKAN")
 elseif(GRAPHICS_API STREQUAL "OPENGL3")
     target_precompile_headers(${PROJECT_NAME} PRIVATE
         "../OpenGLRendering/OGLAssetLoader.h"
-        "../OpenGLRendering/OGLRenderer.h"
+        "./Renderers/OGLSampleGameRenderer.h"
         "../GUI/ImGuiInterface_OpenGL3Win32.h"
     )
     #add specific rendererer here

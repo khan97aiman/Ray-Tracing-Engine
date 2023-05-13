@@ -3,6 +3,11 @@ set(PROJECT_NAME GUI)
 ################################################################################
 # Source groups
 ################################################################################
+set(Base_Files
+    "GuiInterface.h" 
+)
+source_group("Base Files" FILES ${Base_Files})
+
 # if OS is Windows, only then add Imgui (UPDATE THIS)
 if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Windows")
 set(ImGui
@@ -42,6 +47,7 @@ endif()
 source_group("ImGui Files\\ImGui Graphics API Implementation" FILES ${ImGui_Graphics_API_Impl})
 
 set(ALL_FILES
+    ${Base_Files}
     ${ImGui}
     ${ImGui_Graphics_API_Impl}
 )

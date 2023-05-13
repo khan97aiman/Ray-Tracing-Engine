@@ -1,6 +1,5 @@
 #include "GameScreen.h"
 #include "SinglePlayerGame.h"
-#include "GameOverScreen.h"
 #include "Window.h"
 
 using namespace NCL;
@@ -11,7 +10,6 @@ bool GameScreen::sPauseCallback = false;
 void NCL::CSC8599::GameScreen::OnAwake()
 {
 	isMenuDisplayed = false;
-	isDebugDisplayed = false;
 	LoadGame(screenManager->GetGameAssets());
 
 	if (sceneNode)
@@ -38,7 +36,6 @@ void GameScreen::LoadGame(GameAssets* assets) {
 	{
 	case ScreenCommand::CreateSinglePlayerGame:
 		sceneNode = new SinglePlayerGame(assets);
-		bisNetworkedGame = false;
 		break;
 #ifdef BUILD_NETWORKING
 	case ScreenCommand::CreateNetworkedGameAsServer:
@@ -68,7 +65,7 @@ PushdownState::PushdownResult GameScreen::OnUpdate(float dt, PushdownState** new
 }
 
 void GameScreen::MenuFrame() {
-#ifdef _WIN32
+#ifdef _WIN32_
 	ImGui::Begin("Painting Game");
 	if (ImGui::Button("Resume")) {
 		isMenuDisplayed = false;
@@ -93,12 +90,7 @@ void GameScreen::MenuFrame() {
 }
 
 PushdownState::PushdownResult GameScreen::onStateChange(PushdownState** newState) {
-	//add game-over game-win checks here:
 	switch (command) {
-		case ScreenCommand::TransitionToNextScreen:
-			*newState = screenManager->GetScreen(ScreenType::GameOverScreen);
-			//((GameOverScreen*)*newState)->SetWinner(((PaintingGame*)sceneNode)->GetWinner());
-			return PushdownResult::Push;
 		case ScreenCommand::TransitionToPreviousScreen:
 			return PushdownResult::Pop;
 		case ScreenCommand::Exit:

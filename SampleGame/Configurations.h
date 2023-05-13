@@ -15,7 +15,7 @@ namespace NCL {
 				#endif
 				#ifdef OPENGL3
 						guiFactory = new ImGuiFactory_OpenGL3Win32();
-						rendererFactory = new OGLRendererFactory();
+						rendererFactory = new OGLSampleGameRendererFactory();
 						assetLoaderFactory = new Assets::OGLAssetLoaderFactory();
 						//playerControllerFactory = new Win32Pla;
 				#endif

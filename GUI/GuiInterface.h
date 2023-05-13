@@ -5,11 +5,10 @@ namespace NCL {
 	
 	class GuiInterface {
 	public:
-		virtual void Init() = 0;
 		virtual void ProcessEvents() = 0;
 		virtual void Render(std::function<void()> windowFunc) = 0;
-		virtual void CleanUp() = 0;
 
+		virtual ~GuiInterface() {}
 	};
 
 	class GuiFactory {

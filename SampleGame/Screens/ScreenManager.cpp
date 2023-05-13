@@ -2,7 +2,6 @@
 #include "SplashScreen.h"
 #include "MainMenuScreen.h"
 #include "GameScreen.h"
-#include "GameOverScreen.h"
 
 using namespace NCL;
 using namespace CSC8599;
@@ -21,7 +20,6 @@ void ScreenManager::LoadScreens() {
 
 	screens.insert(std::make_pair(ScreenType::SplashScreen, std::make_unique<SplashScreen>(this, screenSceneNodes.at(ScreenType::SplashScreen).get())));
 	screens.insert(std::make_pair(ScreenType::MainMenuScreen, std::make_unique<MainMenuScreen>(this, screenSceneNodes.at(ScreenType::MainMenuScreen).get())));
-	screens.insert(std::make_pair(ScreenType::GameOverScreen, std::make_unique<GameOverScreen>(this, screenSceneNodes.at(ScreenType::GameOverScreen).get())));
 	screens.insert(std::make_pair(ScreenType::GameScreen, std::make_unique<GameScreen>(this)));
 }
 
@@ -38,10 +36,9 @@ bool ScreenManager::Update(float dt) {
 }
 
 PushdownState::PushdownResult BaseScreen::OnUpdate(float dt, PushdownState** newState) {
-	if (!isMenuDisplayed || bisNetworkedGame) {
+	if (!isMenuDisplayed) {
 		sceneNode->Update(dt);
 	}
-	TransitionTimer(dt);
 	return onStateChange(newState);
 }
 
@@ -50,23 +47,5 @@ void BaseScreen::OnSleep() {
 }
 
 void BaseScreen::RenderMenu() {
-#ifdef _WIN32
-	// Start the Dear ImGui frame
-	ImGui_ImplOpenGL3_NewFrame();
-	ImGui_ImplWin32_NewFrame();
-	ImGui::NewFrame();
-
-	if (isMenuDisplayed) {
-		MenuFrame();
-	}
-	if (isDebugDisplayed) {
-		DebugWindow();
-	}
-
-	ImGui::EndFrame();
-
-	// Rendering
-	ImGui::Render();
-	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-#endif
+	// CALL GUI::RENDER HERE
 }

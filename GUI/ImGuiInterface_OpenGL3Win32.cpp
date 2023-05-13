@@ -3,7 +3,7 @@
 #include <imgui_impl_opengl3.h>
 #include "Win32Window.h"
 
-void NCL::ImGuiInterface_OpenGl3Win32::Init() {
+NCL::ImGuiInterface_OpenGl3Win32::ImGuiInterface_OpenGl3Win32() {
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
@@ -33,7 +33,7 @@ void NCL::ImGuiInterface_OpenGl3Win32::Render(std::function<void()> windowFunc) 
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }
 
-void NCL::ImGuiInterface_OpenGl3Win32::CleanUp() {
+NCL::ImGuiInterface_OpenGl3Win32::~ImGuiInterface_OpenGl3Win32() {
 	// Cleanup
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplWin32_Shutdown();

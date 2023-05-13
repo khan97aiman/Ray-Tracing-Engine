@@ -5,7 +5,7 @@ using namespace NCL;
 using namespace CSC8599;
 
 void SplashScreen::MenuFrame() {
-#ifdef _WIN32
+#ifdef _WIN32_
 	ImGui::Begin("Painting Game");
 	if (ImGui::Button("Play Game")) {
 		command = ScreenCommand::TransitionToNextScreen;
@@ -28,14 +28,4 @@ PushdownState::PushdownResult SplashScreen::onStateChange(PushdownState** newSta
 		default: 
 			return PushdownResult::NoChange;
 	}
-}
-
-void SplashScreen::TransitionTimer(float dt) {
-#ifdef __ORBIS__
-	totalTime += dt;
-
-	if (totalTime > 3.0f) {
-		command = ScreenCommand::TransitionToNextScreen;
-	}
-#endif
 }

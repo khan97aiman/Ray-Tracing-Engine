@@ -4,7 +4,7 @@ using namespace NCL;
 using namespace CSC8599;
 
 void MainMenuScreen::MenuFrame() {
-#ifdef _WIN32
+#ifdef _WIN32_
 	ImGui::Begin("Main Menu");
 	if (ImGui::Button("Single Player Game")) {
 		command = ScreenCommand::CreateSinglePlayerGame;
@@ -55,13 +55,4 @@ PushdownState::PushdownResult MainMenuScreen::onStateChange(PushdownState** newS
 		return PushdownResult::NoChange;
 	}
 	}
-}
-void MainMenuScreen::TransitionTimer(float dt) {
-#ifdef __ORBIS__
-	totalTime += dt;
-
-	if (totalTime > 3.0f) {
-		command = ScreenCommand::CreateSinglePlayerGame;
-	}
-#endif
 }

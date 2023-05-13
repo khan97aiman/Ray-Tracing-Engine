@@ -3,7 +3,6 @@
 #include "Window.h"
 #include "Utils.h"
 #include "Vector3.h"
-#include "Gun.h"
 #include "AnimationController.h"
 
 
@@ -14,26 +13,25 @@ namespace NCL {
 	public:
 		//TextureBase Constructor
 		Player(reactphysics3d::PhysicsCommon& physicsCommon, reactphysics3d::PhysicsWorld* physicsWorld, Vector3 position, MeshGeometry* mesh, 
-			TextureBase* texture, ShaderBase* shader, const std::unordered_map<std::string, MeshAnimation*>& animations, int size, int team, Gun* gun,
-			std::string objectName, bool networked = false)
-			: PlayerBase(physicsCommon, physicsWorld, position, mesh, texture, shader, animations, size, objectName, networked)
+			TextureBase* texture, ShaderBase* shader, const std::unordered_map<std::string, MeshAnimation*>& animations, int size, int team,
+			std::string objectName)
+			: PlayerBase(physicsCommon, physicsWorld, position, mesh, texture, shader, animations, size, objectName)
 		{
-			SetMemberVariables(gun);
+			SetMemberVariables();
 			playerTeam = team;
 		}
 		//Mesh Material Constructor
 		Player(reactphysics3d::PhysicsCommon& physicsCommon, reactphysics3d::PhysicsWorld* physicsWorld, Vector3 position, MeshGeometry* mesh,
-			MeshMaterial* meshMaterial, ShaderBase* shader, const std::unordered_map<std::string, MeshAnimation*>& animations, int size, int team, Gun* gun,
+			MeshMaterial* meshMaterial, ShaderBase* shader, const std::unordered_map<std::string, MeshAnimation*>& animations, int size, int team,
 			std::string objectName, bool networked = false)
 			: PlayerBase(physicsCommon, physicsWorld, position, mesh, meshMaterial, shader, animations, size, objectName, networked) 
 		{
-			SetMemberVariables(gun);
+			SetMemberVariables();
 			playerTeam = team;
 		}
 		virtual ~Player() {
 			//delete animationController;
 		}
-		Gun* GetGun() const { return gun; }
 		virtual void Update(float dt);
 		virtual void Shoot();
 		Vector2 targetPosition;
@@ -46,9 +44,8 @@ namespace NCL {
 		void SetRespawnTimer(float dt) { respawnTimer += dt; }
 		void ResetSpawnTimer() { respawnTimer = 0.0f; }
 	protected:
-		void SetMemberVariables(Gun* gun);
+		void SetMemberVariables();
 		//AnimationController* animationController = NULL;
-		Gun* gun = NULL;
 		int playerTeam; // 0 is Red, 1 is Blue
 		const Vector3 gunOffset = Vector3(0.5, 1, -4);
 		bool hasRespawned = false;
