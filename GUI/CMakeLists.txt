@@ -3,10 +3,6 @@ set(PROJECT_NAME GUI)
 ################################################################################
 # Source groups
 ################################################################################
-set(Base_Files
-    "GuiInterface.h" 
-)
-source_group("Base Files" FILES ${Base_Files})
 
 # if OS is Windows, only then add Imgui (UPDATE THIS)
 if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Windows")
@@ -32,22 +28,21 @@ if(GRAPHICS_API STREQUAL "VULKAN")
     set(ImGui_Graphics_API_Impl
         "../Middleware/ImGui/imgui_impl_vulkan.cpp"
         "../Middleware/ImGui/imgui_impl_vulkan.h"
-        "ImGuiInterface_VulkanWin32.h"
-        "ImGuiInterface_VulkanWin32.cpp"
+        "ImGuiObject_VulkanWin32.h"
+        "ImGuiObject_VulkanWin32.cpp"
     )
 elseif(GRAPHICS_API STREQUAL "OPENGL3")
     set(ImGui_Graphics_API_Impl
         "../Middleware/ImGui/imgui_impl_opengl3.cpp"
         "../Middleware/ImGui/imgui_impl_opengl3.h"
-        "ImGuiInterface_OpenGL3Win32.h"
-        "ImGuiInterface_OpenGL3Win32.cpp"
+        "ImGuiObject_OpenGL3Win32.h"
+        "ImGuiObject_OpenGL3Win32.cpp"
     )
 endif()
 
 source_group("ImGui Files\\ImGui Graphics API Implementation" FILES ${ImGui_Graphics_API_Impl})
 
 set(ALL_FILES
-    ${Base_Files}
     ${ImGui}
     ${ImGui_Graphics_API_Impl}
 )
@@ -108,6 +103,7 @@ endif()
 include_directories("./")
 include_directories("../Middleware/ImGui/")
 include_directories("../GameEngine/Maths/")
+include_directories("../GameEngine/EntityComponents/")
 include_directories("../GameEngine/WindowingAndInput/")
 include_directories("../GameEngine/WindowingAndInput/Win32/")
 

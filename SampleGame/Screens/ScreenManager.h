@@ -3,7 +3,7 @@
 #include "SceneNode.h"
 #include "PushdownState.h"
 #include "PushdownMachine.h"
-#include <GuiInterface.h>
+#include <GuiObject.h>
 
 namespace NCL::CSC8599 {
 	enum class ScreenType {
@@ -38,7 +38,7 @@ namespace NCL::CSC8599 {
 		std::unordered_map<ScreenType, std::unique_ptr<SceneNode>> screenSceneNodes;
 		GameAssets* assets;
 		std::unique_ptr<PushdownMachine> machine;
-		GuiInterface* guiInterface;
+		GuiObject* guiInterface;
 	};
 	class BaseScreen : public PushdownState
 	{
@@ -53,7 +53,6 @@ namespace NCL::CSC8599 {
 		ScreenType GetScreenType() const { return screenType; }
 		void RenderMenu();
 	protected:
-		virtual void MenuFrame() = 0;
 		virtual PushdownResult onStateChange(PushdownState** newState) = 0;
 		SceneNode* sceneNode = NULL;
 		bool isMenuDisplayed = true;

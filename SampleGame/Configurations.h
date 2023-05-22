@@ -2,7 +2,7 @@
 #include <RendererBase.h>
 #include <AssetLoader.h>
 #include "PlayerController.h"
-#include <GuiInterface.h>
+#include <GuiObject.h>
 
 namespace NCL {
 	namespace CSC8599 {

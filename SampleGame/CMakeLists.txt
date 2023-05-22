@@ -143,13 +143,13 @@ if(GRAPHICS_API STREQUAL "VULKAN")
     target_precompile_headers(${PROJECT_NAME} PRIVATE
        # "../OpenGLRendering/OGLAssetLoader.h"
        # "../OpenGLRendering/OGLRenderer.h"
-        "./GUI/ImGuiInterface_VulkanWin32.h"
+        "./GUI/ImGuiObject_VulkanWin32.h"
     )
 elseif(GRAPHICS_API STREQUAL "OPENGL3")
     target_precompile_headers(${PROJECT_NAME} PRIVATE
         "../OpenGLRendering/OGLAssetLoader.h"
         "./Renderers/OGLSampleGameRenderer.h"
-        "../GUI/ImGuiInterface_OpenGL3Win32.h"
+        "../GUI/ImGuiObject_OpenGL3Win32.h"
     )
     #add specific rendererer here
 endif()

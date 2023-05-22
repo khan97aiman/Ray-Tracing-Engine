@@ -1,9 +1,9 @@
-#include "ImGuiInterface_OpenGL3Win32.h"
+#include "ImGuiObject_OpenGL3Win32.h"
 #include <imgui_impl_win32.h>
 #include <imgui_impl_opengl3.h>
 #include "Win32Window.h"
 
-NCL::ImGuiInterface_OpenGl3Win32::ImGuiInterface_OpenGl3Win32() {
+NCL::ImGuiObject_OpenGl3Win32::ImGuiObject_OpenGl3Win32() {
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
@@ -15,10 +15,10 @@ NCL::ImGuiInterface_OpenGl3Win32::ImGuiInterface_OpenGl3Win32() {
 	ImGui::StyleColorsClassic();
 }
 
-void NCL::ImGuiInterface_OpenGl3Win32::ProcessEvents() {
+void NCL::ImGuiObject_OpenGl3Win32::ProcessEvents() {
 }
 
-void NCL::ImGuiInterface_OpenGl3Win32::Render(std::function<void()> windowFunc) {
+void NCL::ImGuiObject_OpenGl3Win32::Render(std::function<void()> windowFunc) {
 	// Start the Dear ImGui frame
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplWin32_NewFrame();
@@ -33,7 +33,7 @@ void NCL::ImGuiInterface_OpenGl3Win32::Render(std::function<void()> windowFunc) 
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }
 
-NCL::ImGuiInterface_OpenGl3Win32::~ImGuiInterface_OpenGl3Win32() {
+NCL::ImGuiObject_OpenGl3Win32::~ImGuiObject_OpenGl3Win32() {
 	// Cleanup
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplWin32_Shutdown();

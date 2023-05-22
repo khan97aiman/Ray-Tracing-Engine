@@ -53,7 +53,8 @@ void OGLSampleGameRenderer::RenderBasicScreen() { //change this to render static
 	BindMesh(r->GetMesh());
 	BindTextureToShader(r->GetDefaultTexture(), "mainTex", 0);
 	DrawBoundMesh();
-	boundScreen->RenderMenu();
+	//boundScreen->RenderMenu();
+	// guiInterface->Render(boundScreen->GetGuiFrame());
 }
 void OGLSampleGameRenderer::RenderGameScreen() { //change this to RenderScreen
 	rendererStartTime = std::chrono::high_resolution_clock::now();

@@ -10,7 +10,7 @@ Configurations GameManager::sConfig = Configurations();
 GameManager::GameManager(Window* window) {
 	renderer = sConfig.rendererFactory->createRenderer(*window);
 	assetLoader = sConfig.assetLoaderFactory->createAssetLoader();
-	guiInterface = sConfig.guiFactory->CeateGuiInterface();
+	guiInterface = sConfig.guiFactory->CeateGuiObject();
 	gameAssets = new GameAssets(assetLoader);
 	screenManager = new ScreenManager(gameAssets);
 	renderer->BindDebugShader(gameAssets->GetShader("debugShader")); //find a way to omit this

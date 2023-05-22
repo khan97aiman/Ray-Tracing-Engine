@@ -3,17 +3,16 @@
 
 namespace NCL {
 	
-	class GuiInterface {
+	class GuiObject {
 	public:
 		virtual void ProcessEvents() = 0;
 		virtual void Render(std::function<void()> windowFunc) = 0;
-
-		virtual ~GuiInterface() {}
+		virtual ~GuiObject() {}
 	};
 
 	class GuiFactory {
 	public:
 		virtual ~GuiFactory() {}
-		virtual GuiInterface* CeateGuiInterface() = 0;
+		virtual GuiObject* CeateGuiObject() = 0;
 	};
 }

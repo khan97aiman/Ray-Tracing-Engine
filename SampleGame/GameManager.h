@@ -18,6 +18,6 @@ namespace NCL::CSC8599 {
 		Assets::AssetLoader* assetLoader;
 		GameAssets* gameAssets;
 		ScreenManager* screenManager;
-		GuiInterface* guiInterface;
+		GuiObject* guiInterface;
 	};
 }
