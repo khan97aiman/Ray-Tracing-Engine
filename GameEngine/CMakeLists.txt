@@ -143,10 +143,14 @@ source_group("Maths" FILES ${Maths})
 set(Scene
     "./Scene/GameWorld.h"
     "./Scene/GameWorld.cpp" 
+    "./Scene/ScreenManagerBase.h"
+    "./Scene/ScreenManagerBase.cpp" 
     "./Scene/PlayerBase.h" 
     "./Scene/PlayerBase.cpp" 
     "./Scene/AnimationController.cpp"
     "./Scene/AnimationController.h"
+    "./Scene/GameAssets.cpp"
+    "./Scene/GameAssets.h"
 )
 source_group("Scene" FILES ${Scene})
 

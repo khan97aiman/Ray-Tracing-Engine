@@ -9,7 +9,7 @@ set(Header_Files
     "SampleGame.h"
     "GameManager.h"
     "Configurations.h"
-    "GameAssets.h"
+    "SampleGameAssets.h"
     "NetworkedGame.h"
     "NetworkPlayer.h"
 )
@@ -19,7 +19,7 @@ set(Header_Files
     "SampleGame.h"
     "GameManager.h"
     "Configurations.h"
-    "GameAssets.h"
+    "SampleGameAssets.h"
 )
 endif()
 source_group("Header Files" FILES ${Header_Files})
@@ -30,7 +30,7 @@ set(Source_Files
     "SinglePlayerGame.cpp"
     "SampleGame.cpp"
     "GameManager.cpp"
-    "GameAssets.cpp"
+    "SampleGameAssets.cpp"
     "NetworkedGame.cpp"
     "NetworkPlayer.cpp"
 )
@@ -40,7 +40,7 @@ set(Source_Files
     "SinglePlayerGame.cpp"
     "SampleGame.cpp"
     "GameManager.cpp"
-    "GameAssets.cpp"
+    "SampleGameAssets.cpp"
 )
 endif()
 

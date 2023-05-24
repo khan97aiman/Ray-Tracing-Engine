@@ -65,8 +65,6 @@ namespace NCL {
 		#define ATOMIC_COUNT 3
 		public:
 			OGLSampleGameRenderer(Window& w);
-			virtual void BindScreen(void* screen) { boundScreen = (BaseScreen*)screen; };
-
 			void BindDebugShader(ShaderBase* dShader) { debugShader = dShader; }
 
 			void SetDebugRenderers();
@@ -93,7 +91,6 @@ namespace NCL {
 
 
 			vector<const RenderObject*> activeObjects;
-			BaseScreen* boundScreen = nullptr;
 			Vector4		lightColour;
 			float		lightRadius;
 			Vector3		lightPosition; 

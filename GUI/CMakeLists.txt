@@ -20,6 +20,8 @@ set(ImGui
     "../Middleware/ImGui/imstb_textedit.h" 
     "../Middleware/ImGui/imstb_truetype.h" 
     "../Middleware/ImGui/imconfig.h" 
+    "ImGuiObject.h"
+    "ImGuiObject.cpp"
 )
 source_group("ImGui Files" FILES ${ImGui})
 
@@ -106,6 +108,8 @@ include_directories("../GameEngine/Maths/")
 include_directories("../GameEngine/EntityComponents/")
 include_directories("../GameEngine/WindowingAndInput/")
 include_directories("../GameEngine/WindowingAndInput/Win32/")
+include_directories("../GameEngine/Scene/")
+
 
 set(ADDITIONAL_LIBRARY_DEPENDENCIES
     "GameEngine"

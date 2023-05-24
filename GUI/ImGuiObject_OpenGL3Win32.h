@@ -1,8 +1,8 @@
 #pragma once
-#include <GuiObject.h>
+#include "ImGuiObject.h"
 
 namespace NCL {
-	class ImGuiObject_OpenGl3Win32 : public GuiObject {
+	class ImGuiObject_OpenGl3Win32 : public ImGuiObject {
 	public:
 		ImGuiObject_OpenGl3Win32();
 		virtual void ProcessEvents() override;

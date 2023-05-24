@@ -1,7 +1,7 @@
 #pragma once
 #include "ScreenManager.h"
 #include "Configurations.h"
-#include "GameAssets.h"
+#include "SampleGameAssets.h"
 #include <PushdownMachine.h>
 
 namespace NCL::CSC8599 {
@@ -18,6 +18,6 @@ namespace NCL::CSC8599 {
 		Assets::AssetLoader* assetLoader;
 		GameAssets* gameAssets;
 		ScreenManager* screenManager;
-		GuiObject* guiInterface;
+		GuiObject* guiObject;
 	};
 }

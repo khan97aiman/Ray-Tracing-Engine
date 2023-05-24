@@ -22,11 +22,11 @@ namespace NCL {
 		void Load();
 	protected:
 		Assets::AssetLoader* loader;
-		void LoadMeshes();
-		void LoadMeshMaterials();
-		void LoadMeshAnimations();
-		void LoadTextures();
-		void LoadShaders();
+		virtual void LoadMeshes() = 0;
+		virtual void LoadMeshMaterials() = 0;
+		virtual void LoadMeshAnimations() = 0;
+		virtual void LoadTextures() = 0;
+		virtual void LoadShaders() = 0;
 
 		std::unordered_map<std::string, std::unique_ptr<MeshGeometry>> meshes;
 		std::unordered_map<std::string, std::unique_ptr<MeshMaterial>> meshMaterials;

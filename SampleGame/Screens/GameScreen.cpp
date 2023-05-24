@@ -64,29 +64,26 @@ PushdownState::PushdownResult GameScreen::OnUpdate(float dt, PushdownState** new
 	return BaseScreen::OnUpdate(dt, newState);
 }
 
-void GameScreen::MenuFrame() {
-#ifdef _WIN32_
-	ImGui::Begin("Painting Game");
-	if (ImGui::Button("Resume")) {
-		isMenuDisplayed = false;
-	}
-	if (ImGui::Button("Toggle Debug Lines")) {
+void GameScreen::GuiWindow() {
+	GuiObject* guiObject = screenManager->GetGuiObject();
+	guiObject->CreateGuiWindow("Painting Game");
+	guiObject->CreateButton("Resume", [&]() { isMenuDisplayed = false; });
+	guiObject->CreateButton("Toggle Debug Lines", [&]() { 
 		isDebugRenderingEnabled = !isDebugRenderingEnabled;
 		sceneNode->GetPhysicsWorld()->setIsDebugRenderingEnabled(isDebugRenderingEnabled);
 		isMenuDisplayed = false;
-	}
-	if (ImGui::Button("Debug Window")) {
-		isDebugDisplayed = true;
+	});
+	guiObject->CreateButton("Debug Window", [&]() {
+		//isDebugDisplayed = true;
 		isMenuDisplayed = false;
-	}
-	if (ImGui::Button("Quit to Main Menu")) {
+	});
+	guiObject->CreateButton("Quit to Main Menu", [&]() {
 		command = ScreenCommand::TransitionToPreviousScreen;
-	}
-	if (ImGui::Button("Quit Game")) {
+	});
+	guiObject->CreateButton("Quit Game", [&]() {
 		command = ScreenCommand::Exit;
-	}
-	ImGui::End();
-#endif
+	});
+	guiObject->CloseGuiWindow();
 }
 
 PushdownState::PushdownResult GameScreen::onStateChange(PushdownState** newState) {

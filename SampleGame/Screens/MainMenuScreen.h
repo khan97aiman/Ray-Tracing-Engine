@@ -10,7 +10,7 @@ namespace NCL {
 				screenType = ScreenType::MainMenuScreen;
 			}
 		protected:
-			virtual void MenuFrame();
+			virtual void GuiWindow() override;
 			virtual PushdownResult onStateChange(PushdownState** newState);
 		};
 

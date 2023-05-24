@@ -4,17 +4,12 @@
 using namespace NCL;
 using namespace CSC8599;
 
-void SplashScreen::MenuFrame() {
-#ifdef _WIN32_
-	ImGui::Begin("Painting Game");
-	if (ImGui::Button("Play Game")) {
-		command = ScreenCommand::TransitionToNextScreen;
-	}
-	if (ImGui::Button("Exit")) {
-		command = ScreenCommand::Exit;
-	}
-	ImGui::End();
-#endif
+void SplashScreen::GuiWindow() {
+	GuiObject* guiObject = screenManager->GetGuiObject();
+	guiObject->CreateGuiWindow("Painting Game");
+	guiObject->CreateButton("Play Game", [&]() { command = ScreenCommand::TransitionToNextScreen; });
+	guiObject->CreateButton("Exit", [&]() { command = ScreenCommand::Exit; });
+	guiObject->CloseGuiWindow();
 }
 
 PushdownState::PushdownResult SplashScreen::onStateChange(PushdownState** newState) {

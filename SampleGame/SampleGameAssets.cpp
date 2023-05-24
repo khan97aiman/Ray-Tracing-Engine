@@ -1,54 +1,9 @@
-#include "GameAssets.h"
-
-
-#include "Assets.h"
+#include "SampleGameAssets.h"
 
 using namespace NCL;
 using namespace Assets;
 
-GameAssets::GameAssets(Assets::AssetLoader* loader) {
-	this->loader = loader;
-	Load();
-}
-
-void GameAssets::Load()
-{
-	// Clear just in case
-	meshes.clear();
-	meshAnimations.clear();
-	meshMaterials.clear();
-	shaders.clear();
-	textures.clear();
-
-	LoadTextures();
-	LoadMeshes();
-	LoadMeshMaterials();
-	LoadMeshAnimations();
-	LoadShaders();
-}
-
-MeshGeometry* NCL::GameAssets::GetMesh(const std::string& identifier) const {
-	return meshes.count(identifier) ? meshes.at(identifier).get() : nullptr;
-}
-
-MeshMaterial* NCL::GameAssets::GetMeshMaterial(const std::string& identifier) const {
-	return meshMaterials.count(identifier) ? meshMaterials.at(identifier).get() : nullptr;
-}
-
-MeshAnimation* NCL::GameAssets::GetMeshAnimation(const std::string& identifier) const {
-	return meshAnimations.count(identifier) ? meshAnimations.at(identifier).get() : nullptr;
-}
-
-TextureBase* NCL::GameAssets::GetTexture(const std::string& identifier) const {
-	return textures.count(identifier) ? textures.at(identifier).get() : nullptr;
-}
-
-ShaderBase* NCL::GameAssets::GetShader(const std::string& identifier) const {
-	return shaders.count(identifier) ? shaders.at(identifier).get() : nullptr;
-}
-
-
-void GameAssets::LoadMeshes() {
+void SampleGameAssets::LoadMeshes() {
 	meshes.insert(std::make_pair("floorMesh", loader->LoadMesh("BasicLVL1.msh")));
 	meshes.insert(std::make_pair("cubeMesh", loader->LoadMesh("cube.msh")));
 	meshes.insert(std::make_pair("mainChar", loader->LoadMesh("Aj_TPose.msh")));
@@ -60,17 +15,17 @@ void GameAssets::LoadMeshes() {
 	meshes.insert(std::make_pair("AiMesh", loader->LoadMesh("X_Bot.msh")));
 }
 
-void GameAssets::LoadMeshMaterials() {
+void SampleGameAssets::LoadMeshMaterials() {
 	meshMaterials.insert(std::make_pair("redMainCharMat", loader->LoadMeshMaterial("red_Aj_TPose.mat")));
 }
 
-void GameAssets::LoadMeshAnimations() {
+void SampleGameAssets::LoadMeshAnimations() {
 	meshAnimations.insert(std::make_pair("mainCharTauntAnim", std::make_unique<MeshAnimation>("Taunt.anm")));
 	meshAnimations.insert(std::make_pair("mainCharIdleAnim", std::make_unique<MeshAnimation>("AJIdle.anm")));
 	meshAnimations.insert(std::make_pair("mainCharRunAnim", std::make_unique<MeshAnimation>("AJRun.anm")));
 }
 
-void GameAssets::LoadTextures() {
+void SampleGameAssets::LoadTextures() {
 	textures.insert(std::make_pair("basicTex", loader->LoadTexture("checkerboard.png")));
 	textures.insert(std::make_pair("loadingTex", loader->LoadTexture("loadingSprites.png")));
 	textures.insert(std::make_pair("gunFocusTex", loader->LoadTexture("gunFocusPoint.png")));
@@ -79,7 +34,7 @@ void GameAssets::LoadTextures() {
 	textures.insert(std::make_pair("gameOverScreenTex", loader->LoadTexture("Screens/bg3.jpg")));
 }
 
-void GameAssets::LoadShaders() {
+void SampleGameAssets::LoadShaders() {
 #ifdef _WIN32
 	shaders.insert(std::make_pair("basicShader", loader->LoadShader("scene.vert", "scene.frag")));
 	shaders.insert(std::make_pair("terrainShader", loader->LoadShader("terrain.vert", "terrain.frag")));

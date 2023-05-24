@@ -7,8 +7,7 @@ using namespace NCL;
 using namespace CSC8599;
 
 
-ScreenManager::ScreenManager(GameAssets* assets) {
-	this->assets = assets;
+ScreenManager::ScreenManager(GameAssets* assets, GuiObject* guiObject) : ScreenManagerBase(assets, guiObject) {
 	LoadScreens();
 	machine = std::make_unique<PushdownMachine>((PushdownState*)GetScreen(ScreenType::SplashScreen));
 }
@@ -21,31 +20,4 @@ void ScreenManager::LoadScreens() {
 	screens.insert(std::make_pair(ScreenType::SplashScreen, std::make_unique<SplashScreen>(this, screenSceneNodes.at(ScreenType::SplashScreen).get())));
 	screens.insert(std::make_pair(ScreenType::MainMenuScreen, std::make_unique<MainMenuScreen>(this, screenSceneNodes.at(ScreenType::MainMenuScreen).get())));
 	screens.insert(std::make_pair(ScreenType::GameScreen, std::make_unique<GameScreen>(this)));
-}
-
-BaseScreen* NCL::CSC8599::ScreenManager::GetScreen(ScreenType screenType) const {
-	return screens.count(screenType) ? screens.at(screenType).get() : nullptr;
-}
-
-BaseScreen* ScreenManager::GetActiveScreen() const {
-	return (BaseScreen*)machine->GetActiveState();
-}
-
-bool ScreenManager::Update(float dt) {
-	return machine->Update(dt);
-}
-
-PushdownState::PushdownResult BaseScreen::OnUpdate(float dt, PushdownState** newState) {
-	if (!isMenuDisplayed) {
-		sceneNode->Update(dt);
-	}
-	return onStateChange(newState);
-}
-
-void BaseScreen::OnSleep() {
-	command = ScreenCommand::None;
-}
-
-void BaseScreen::RenderMenu() {
-	// CALL GUI::RENDER HERE
 }

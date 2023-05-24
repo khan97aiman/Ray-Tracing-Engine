@@ -3,35 +3,12 @@
 using namespace NCL;
 using namespace CSC8599;
 
-void MainMenuScreen::MenuFrame() {
-#ifdef _WIN32_
-	ImGui::Begin("Main Menu");
-	if (ImGui::Button("Single Player Game")) {
-		command = ScreenCommand::CreateSinglePlayerGame;
-	}
-	if (ImGui::Button("Split Screen: 2 Player Game")) {
-		command = ScreenCommand::CreateSplitScreenGame;
-	}
-	if (ImGui::Button("LAN Game")) {
-		ImGui::OpenPopup("Select Networked Game Mode");
-	}	
-	if (ImGui::Button("Exit")) {
-		command = ScreenCommand::TransitionToPreviousScreen;
-	}
-	if (ImGui::BeginPopupModal("Select Networked Game Mode"))
-	{
-		if (ImGui::Button("Start As Server")) {
-			command = ScreenCommand::CreateNetworkedGameAsServer;
-			ImGui::CloseCurrentPopup();
-		}
-		if (ImGui::Button("Start As Client")) {
-			command = ScreenCommand::CreateNetworkedGameAsClient;
-			ImGui::CloseCurrentPopup();
-		}
-		ImGui::EndPopup();
-	}
-	ImGui::End();
-#endif
+void MainMenuScreen::GuiWindow() {
+	GuiObject* guiObject = screenManager->GetGuiObject();
+	guiObject->CreateGuiWindow("Painting Game");
+	guiObject->CreateButton("Start Game", [&]() { command = ScreenCommand::CreateSinglePlayerGame; });
+	guiObject->CreateButton("Exit", [&]() { command = ScreenCommand::TransitionToPreviousScreen; });
+	guiObject->CloseGuiWindow();
 }
 
 PushdownState::PushdownResult MainMenuScreen::onStateChange(PushdownState** newState) {

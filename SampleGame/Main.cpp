@@ -20,14 +20,11 @@ int main() {
 		return -1;
 	}
 
-
-
 	w->ShowOSPointer(true);
 	w->LockMouseToWindow(true);
 	
 	w->GetTimer()->GetTimeDeltaSeconds(); //Clear the timer so we don't get a larget first dt!
 
-	w->SetConsolePosition(1950, 100);
 	while (w->UpdateWindow()) {
 		float dt = w->GetTimer()->GetTimeDeltaSeconds();
 		if (dt > 0.5f) {

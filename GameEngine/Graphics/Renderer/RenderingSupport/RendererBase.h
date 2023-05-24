@@ -12,7 +12,9 @@ https://research.ncl.ac.uk/game/
 #include "TextureBase.h"
 #include "MeshGeometry.h"
 #include <chrono>
+#include "ScreenManagerBase.h"
 
+using namespace NCL::CSC8599;
 namespace NCL::Rendering {
 	enum class VerticalSyncState {
 		VSync_ON,
@@ -47,7 +49,7 @@ namespace NCL::Rendering {
 		virtual bool SetVerticalSync(VerticalSyncState s) {
 			return false;
 		}
-		virtual void BindScreen(void* screen) {};
+		virtual void BindScreen(BaseScreen* screen) { boundScreen = screen; };
 
 		virtual void BindDebugShader(ShaderBase* shader) {} //Currently we only override it in OGLPaintingGameRenderer
 
@@ -71,6 +73,7 @@ namespace NCL::Rendering {
 
 		bool initState;
 		bool forceValidDebugState;
+		BaseScreen* boundScreen = nullptr;
 	};
 
 	// The abstract factory interface for creating renderer objects

@@ -10,9 +10,9 @@ Configurations GameManager::sConfig = Configurations();
 GameManager::GameManager(Window* window) {
 	renderer = sConfig.rendererFactory->createRenderer(*window);
 	assetLoader = sConfig.assetLoaderFactory->createAssetLoader();
-	guiInterface = sConfig.guiFactory->CeateGuiObject();
-	gameAssets = new GameAssets(assetLoader);
-	screenManager = new ScreenManager(gameAssets);
+	guiObject = sConfig.guiFactory->CeateGuiObject();
+	gameAssets = new SampleGameAssets(assetLoader);
+	screenManager = new ScreenManager(gameAssets, guiObject);
 	renderer->BindDebugShader(gameAssets->GetShader("debugShader")); //find a way to omit this
 }
 
@@ -21,7 +21,7 @@ GameManager::~GameManager() {
 	delete screenManager;
 	delete assetLoader;
 	delete gameAssets;
-	delete guiInterface;
+	delete guiObject;
 }
 
 bool GameManager::RunGame(float dt) {

@@ -16,7 +16,7 @@ namespace NCL {
 			static void GamePauseCallback();
 		protected:
 			void LoadGame(GameAssets* assets);
-			virtual void MenuFrame();
+			virtual void GuiWindow() override;
 			virtual PushdownResult onStateChange(PushdownState** newState);
 			
 
