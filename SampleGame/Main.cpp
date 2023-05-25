@@ -21,7 +21,7 @@ int main() {
 	}
 
 	w->ShowOSPointer(true);
-	w->LockMouseToWindow(true);
+	w->LockMouseToWindow(false);
 	
 	w->GetTimer()->GetTimeDeltaSeconds(); //Clear the timer so we don't get a larget first dt!
 
