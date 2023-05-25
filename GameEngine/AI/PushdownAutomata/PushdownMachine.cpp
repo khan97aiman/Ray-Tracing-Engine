@@ -37,11 +37,8 @@ bool PushdownMachine::Update(float dt) {
 				activeState = newState;
 				activeState->OnAwake();
 			}break;
-			case PushdownState::Reset1: {
+			case PushdownState::Reset: {
 				Reset();
-			} break;
-			case PushdownState::Reset2: { // Resets to leave 2 screens on machine
-				Reset(2);
 			} break;
 		}
 	}

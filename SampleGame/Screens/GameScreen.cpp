@@ -91,7 +91,7 @@ PushdownState::PushdownResult GameScreen::onStateChange(PushdownState** newState
 		case ScreenCommand::TransitionToPreviousScreen:
 			return PushdownResult::Pop;
 		case ScreenCommand::Exit:
-			return PushdownResult::Reset1;
+			return PushdownResult::Reset;
 		default:
 			return PushdownResult::NoChange;
 	}
