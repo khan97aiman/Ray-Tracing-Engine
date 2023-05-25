@@ -12,10 +12,10 @@
 
 namespace NCL {
 	namespace CSC8599 {
-		class PaintingGame : public SceneNode {
+		class SampleGame : public SceneNode {
 		public:
-			PaintingGame(GameAssets* assets);
-			~PaintingGame();
+			SampleGame(GameAssets* assets);
+			~SampleGame();
 			virtual void Update(float dt);
 			void Restart() { InitWorld(); }
 			virtual GameWorld* GetWorld() const { return world; }

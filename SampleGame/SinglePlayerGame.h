@@ -5,7 +5,7 @@
 namespace NCL {
 	namespace CSC8599 {
 
-		class SinglePlayerGame : public PaintingGame {
+		class SinglePlayerGame : public SampleGame {
 		public:
 			SinglePlayerGame(GameAssets* assets);
 			virtual ~SinglePlayerGame();

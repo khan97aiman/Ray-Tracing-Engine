@@ -14,7 +14,7 @@
 using namespace NCL;
 using namespace CSC8599;
 
-PaintingGame::PaintingGame(GameAssets* assets) {
+SampleGame::SampleGame(GameAssets* assets) {
 	this->assets = assets;
 	physicsWorld = physicsCommon.createPhysicsWorld();
 	physicsWorld->setIsGravityEnabled(true);
@@ -27,29 +27,29 @@ PaintingGame::PaintingGame(GameAssets* assets) {
 	//world->AddEventListener(new GameEventListener(&world->GetPhysicsWorld(), world));
 }
 
-PaintingGame::~PaintingGame() {
+SampleGame::~SampleGame() {
 	delete world;
 	physicsCommon.destroyPhysicsWorld(physicsWorld);
 }
 
-void PaintingGame::OperateOnCameras(CameraFunc f) {
+void SampleGame::OperateOnCameras(CameraFunc f) {
 	for (Camera* cam : activeCameras) {
 		f(cam);
 	}
 }
 
-void PaintingGame::InitWorld() {
+void SampleGame::InitWorld() {
 	world->ClearAndErase();
 
 	world->AddGameObject(new Floor(physicsCommon, physicsWorld, Vector3(0, 0, 0), assets->GetMesh("floorMesh"), assets->GetTexture("basicTex"), assets->GetShader("basicShader"), 1));
 }
 
-void PaintingGame::Update(float dt) {
+void SampleGame::Update(float dt) {
 	world->UpdateWorld(dt);
 	physicsWorld->update(dt);
 }
 
-Player* PaintingGame::CreatePlayer(NCL::Maths::Vector3 position) {
+Player* SampleGame::CreatePlayer(NCL::Maths::Vector3 position) {
 	std::unordered_map<std::string, MeshAnimation*> animations;
 	animations.insert(std::make_pair("idleAnimation", assets->GetMeshAnimation("mainCharIdleAnim")));
 	animations.insert(std::make_pair("moveAnimation", assets->GetMeshAnimation("mainCharRunAnim")));

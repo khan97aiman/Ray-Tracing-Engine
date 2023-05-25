@@ -5,7 +5,7 @@
 using namespace NCL;
 using namespace CSC8599;
 
-SinglePlayerGame::SinglePlayerGame(GameAssets * assets) : PaintingGame(assets) {
+SinglePlayerGame::SinglePlayerGame(GameAssets * assets) : SampleGame(assets) {
 		GameManager::sConfig.playerControllerFactory = new Win32PlayerControllerFactory();
 	AddPlayer(Vector3(13.0f, 4.2, 34.0f));
 }
@@ -25,5 +25,5 @@ Player* SinglePlayerGame::AddPlayer(Vector3 position) {
 void SinglePlayerGame::Update(float dt) {
 	playerController->Update(dt);
 	Window::GetWindow()->LockMouseToWindow(true);
-	PaintingGame::Update(dt);
+	SampleGame::Update(dt);
 }
