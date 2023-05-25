@@ -51,7 +51,7 @@ namespace NCL::Rendering {
 		}
 		virtual void BindScreen(BaseScreen* screen) { boundScreen = screen; };
 
-		virtual void BindDebugShader(ShaderBase* shader) {} //Currently we only override it in OGLPaintingGameRenderer
+		virtual void BindDebugShader(ShaderBase* shader) { debugShader = shader; }
 
 		//measuring rendering time.
 		Timepoint rendererStartTime;
@@ -74,6 +74,7 @@ namespace NCL::Rendering {
 		bool initState;
 		bool forceValidDebugState;
 		BaseScreen* boundScreen = nullptr;
+		ShaderBase* debugShader = nullptr;
 	};
 
 	// The abstract factory interface for creating renderer objects

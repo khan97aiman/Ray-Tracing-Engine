@@ -65,7 +65,6 @@ namespace NCL {
 		#define ATOMIC_COUNT 3
 		public:
 			OGLSampleGameRenderer(Window& w);
-			void BindDebugShader(ShaderBase* dShader) { debugShader = dShader; }
 
 			void SetDebugRenderers();
 
@@ -94,7 +93,6 @@ namespace NCL {
 			Vector4		lightColour;
 			float		lightRadius;
 			Vector3		lightPosition; 
-			ShaderBase* debugShader = nullptr;
 
 			//Debug data storage things
 			vector<Vector3> debugLineData;

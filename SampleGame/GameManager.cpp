@@ -13,7 +13,7 @@ GameManager::GameManager(Window* window) {
 	guiObject = sConfig.guiFactory->CeateGuiObject();
 	gameAssets = new SampleGameAssets(assetLoader);
 	screenManager = new ScreenManager(gameAssets, guiObject);
-	renderer->BindDebugShader(gameAssets->GetShader("debugShader")); //find a way to omit this
+	renderer->BindDebugShader(gameAssets->GetShader("debugShader"));
 }
 
 GameManager::~GameManager() {
