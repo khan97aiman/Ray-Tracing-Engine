@@ -39,6 +39,6 @@ namespace NCL::Assets {
 	class AssetLoaderFactory {
 	public:
 		virtual ~AssetLoaderFactory() {}
-		virtual AssetLoader* createAssetLoader() = 0;
+		virtual AssetLoader* CreateAssetLoader() = 0;
 	};
 }

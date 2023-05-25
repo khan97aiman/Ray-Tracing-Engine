@@ -8,8 +8,8 @@ using namespace CSC8599;
 Configurations GameManager::sConfig = Configurations();
 
 GameManager::GameManager(Window* window) {
-	renderer = sConfig.rendererFactory->createRenderer(*window);
-	assetLoader = sConfig.assetLoaderFactory->createAssetLoader();
+	renderer = sConfig.rendererFactory->CreateRenderer(*window);
+	assetLoader = sConfig.assetLoaderFactory->CreateAssetLoader();
 	guiObject = sConfig.guiFactory->CeateGuiObject();
 	gameAssets = new SampleGameAssets(assetLoader);
 	screenManager = new ScreenManager(gameAssets, guiObject);

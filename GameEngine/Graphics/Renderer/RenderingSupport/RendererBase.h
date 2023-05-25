@@ -80,6 +80,6 @@ namespace NCL::Rendering {
 	class RendererFactory {
 	public:
 		virtual ~RendererFactory() {}
-		virtual RendererBase* createRenderer(Window& w) = 0;
+		virtual RendererBase* CreateRenderer(Window& w) = 0;
 	};
 }

@@ -16,7 +16,7 @@ namespace NCL::Assets {
 	// Concrete factory for creating OpenGL Asset Loader
 	class OGLAssetLoaderFactory : public AssetLoaderFactory {
 	public:
-		AssetLoader* createAssetLoader() override {
+		AssetLoader* CreateAssetLoader() override {
 			return new OGLAssetLoader();
 		}
 	};

@@ -89,7 +89,7 @@ namespace NCL {
 		// Concrete factory for creating OpenGL renderer
 		class OGLRendererFactory : public RendererFactory {
 		public:
-			RendererBase* createRenderer(Window& w) override {
+			RendererBase* CreateRenderer(Window& w) override {
 				return new OGLRenderer(w);
 			}
 		};

@@ -109,7 +109,7 @@ namespace NCL {
 		// Concrete factory for creating Painting Game OpenGL renderer
 		class OGLSampleGameRendererFactory : public OGLRendererFactory {
 		public:
-			RendererBase* createRenderer(Window& w) override {
+			RendererBase* CreateRenderer(Window& w) override {
 				return new OGLSampleGameRenderer(w);
 			}
 		};
