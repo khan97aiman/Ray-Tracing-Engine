@@ -14,13 +14,12 @@ namespace NCL {
 	namespace CSC8599 {
 		class AnimationController : public StateMachine {
 		public:
-			AnimationController(/*PlayerBase**/AnimatedObject* gameObject, const std::unordered_map<std::string, MeshAnimation*>& animations);
+			AnimationController(AnimatedObject* gameObject, const std::unordered_map<std::string, MeshAnimation*>& animations);
 			virtual void Update(float dt);
 			MeshAnimation* GetCurrentAnimation() const { return currentAnimation; }
 			int GetCurrentFrame() const { return currentFrame; }
 		protected:
 			MeshAnimation* currentAnimation;
-			/*PlayerBase**/
 			AnimatedObject* gameObject;
 			std::unordered_map<std::string, MeshAnimation*> animations;
 			int currentFrame = 0;

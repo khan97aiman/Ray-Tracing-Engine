@@ -6,7 +6,7 @@
 using namespace NCL;
 using namespace NCL::CSC8599;
 
-AnimationController::AnimationController(/*PlayerBase**/AnimatedObject* gameObject, const std::unordered_map<std::string, MeshAnimation*>& animations) {
+AnimationController::AnimationController(AnimatedObject* gameObject, const std::unordered_map<std::string, MeshAnimation*>& animations) {
 	this->gameObject = gameObject;
 	this->animations = animations;
 	State* idleState = new State([&](float dt)->void {

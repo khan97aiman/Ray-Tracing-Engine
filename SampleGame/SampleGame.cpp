@@ -54,7 +54,8 @@ Player* SampleGame::CreatePlayer(NCL::Maths::Vector3 position) {
 	animations.insert(std::make_pair("idleAnimation", assets->GetMeshAnimation("mainCharIdleAnim")));
 	animations.insert(std::make_pair("moveAnimation", assets->GetMeshAnimation("mainCharRunAnim")));
 	Player* player = NULL;
-	
+	player = new Player(physicsCommon, physicsWorld, position, assets->GetMesh("mainChar"), assets->GetMeshMaterial("redMainCharMat"), assets->GetShader("skinningShader"), animations, 5);
+
 	world->AddGameObject(player);
 	return player;
 }

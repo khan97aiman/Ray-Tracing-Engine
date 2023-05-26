@@ -9,21 +9,8 @@ void Player::Update(float dt) {
 	AnimatedObject::Update(dt);
 }
 
-void Player::Shoot() {
-	/*Ray r = CollisionDetection::BuildRayFromMouse(*camera);
-	Vector3 startPos = r.GetPosition();
-	Vector3 endPos = r.GetPosition() + r.GetDirection() * 1000;
-	shootRay = reactphysics3d::Ray(
-		reactphysics3d::Vector3(startPos.x, startPos.y + 5, startPos.z),
-		reactphysics3d::Vector3(endPos.x, endPos.y, endPos.z));
-	Debug::DrawLine(startPos, endPos, Vector4(1, 1, 1, 1), 3);*/
-	
-	//Debug::DrawLine(startPos, endPos, Vector4(1, 1, 1, 1), 3);
-}
-
 void Player::SetMemberVariables() {
-	if (camera)
-	{
+	if (camera) {
 		camera->SetBasicCameraParameters(this, 0.1f, 500.0f);
 		camera->SetPerspectiveCameraParameters(Window::GetWindow()->GetScreenAspect());
 		camera->SetThirdPersonCamera();

@@ -6,18 +6,9 @@ namespace NCL {
 	using namespace Rendering;
 	using namespace CSC8599;
 
-//	namespace CSC8599 { class GameObject; }
 	class AnimatedObject : public GameObject {
 	public:
-		//Mesh Material Constructor
-		AnimatedObject(reactphysics3d::PhysicsCommon& physicsCommon, reactphysics3d::PhysicsWorld* physicsWorld, Vector3 position, 
-			MeshGeometry* mesh, MeshMaterial* meshMaterial, ShaderBase* shader, const std::unordered_map<std::string, MeshAnimation*>& animations,
-			int size, std::string objectName = "");
-		//TextureBase Constructor
-		AnimatedObject(reactphysics3d::PhysicsCommon& physicsCommon, reactphysics3d::PhysicsWorld* physicsWorld, Vector3 position,
-			MeshGeometry* mesh, TextureBase* texture, ShaderBase* shader, const std::unordered_map<std::string, MeshAnimation*>& animations,
-			int size, std::string objectName = "");
-
+		AnimatedObject(reactphysics3d::PhysicsCommon& physicsCommon, reactphysics3d::PhysicsWorld* physicsWorld, std::string objectName) : GameObject(physicsCommon, physicsWorld, objectName) {}
 		virtual ~AnimatedObject();
 		virtual void Update(float dt);
 		void SetIsMoving(bool val) { isMoving = val; }
@@ -28,7 +19,6 @@ namespace NCL {
 	protected:
 		AnimationController* animationController = NULL;
 		bool isMoving = false;
-
 	};
 
 
