@@ -1,5 +1,6 @@
 #include "GameAssets.h"
 #include "Assets.h"
+#include "AssetLoader.h"
 
 using namespace NCL;
 using namespace Assets;

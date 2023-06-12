@@ -43,6 +43,101 @@ VulkanMesh::VulkanMesh(const std::string& filename) : MeshGeometry(filename) {
 VulkanMesh::~VulkanMesh()	{
 }
 
+UniqueVulkanMesh NCL::Rendering::VulkanMesh::GenerateFlatMesh(RendererBase* renderer, int hVertexCount, int wVertexCount) {
+	VulkanMesh* m = new VulkanMesh();
+	m->primType = Triangles;
+
+	for (int z = 0; z < hVertexCount; ++z) {
+		for (int x = 0; x < wVertexCount; ++x) {
+			m->positions.emplace_back(Vector3((float)x / ((float)wVertexCount - 1), 0, (float)z / ((float)hVertexCount - 1)));
+			m->texCoords.emplace_back(Vector2((float)x / ((float)wVertexCount - 1), (float)z / ((float)hVertexCount - 1)));
+		}
+	}
+
+	int i = 0;
+	for (int z = 0; z < hVertexCount - 1; ++z) {
+		for (int x = 0; x < wVertexCount - 1; ++x) {
+			int a = (z * (wVertexCount)) + x;
+			int b = (z * (wVertexCount)) + (x + 1);
+			int c = ((z + 1) * (wVertexCount)) + (x + 1);
+			int d = ((z + 1) * (wVertexCount)) + x;
+			m->indices.emplace_back(a);
+			m->indices.emplace_back(c);
+			m->indices.emplace_back(b);
+			m->indices.emplace_back(c);
+			m->indices.emplace_back(a);
+			m->indices.emplace_back(d);
+		}
+	}
+
+	m->AddSubMesh(0, (wVertexCount - 1) * (hVertexCount - 1) * 6, 0);
+	m->CalculateNormals();
+	m->CalculateTangents();
+
+	m->UploadToGPU(renderer);
+	return UniqueVulkanMesh(m);
+}
+
+UniqueVulkanMesh NCL::Rendering::VulkanMesh::GenerateHeightMap(RendererBase* renderer, const std::string& filename, int heightMultiplier) {
+	unsigned char* texData = nullptr;
+	int wVertexCount = 0;
+	int hVertexCount = 0;
+	int channels = 0;
+	int flags = 0;
+
+	//TextureLoader::LoadTextureGreyScale(filename, texData, wVertexCount, hVertexCount, channels, flags);
+	VulkanMesh* m = new VulkanMesh();
+	m->primType = Triangles;
+
+	auto pixelPtr = &texData[0];
+	int bytesPerPixel = 1;
+	float maxPixelColor = 256.0f;
+	for (int z = 0; z < hVertexCount; ++z) {
+		for (int x = 0; x < wVertexCount; ++x) {
+
+			float height = ((*pixelPtr) / maxPixelColor) * heightMultiplier;
+			m->positions.emplace_back(Vector3((float)x / ((float)wVertexCount - 1), height, (float)z / ((float)hVertexCount - 1)));
+			m->texCoords.emplace_back(Vector2((float)x / ((float)wVertexCount - 1), (float)z / ((float)hVertexCount - 1)));
+			pixelPtr += bytesPerPixel;
+		}
+	}
+
+	int i = 0;
+	for (int z = 0; z < hVertexCount - 1; ++z) {
+		for (int x = 0; x < wVertexCount - 1; ++x) {
+			int a = (z * (wVertexCount)) + x;
+			int b = (z * (wVertexCount)) + (x + 1);
+			int c = ((z + 1) * (wVertexCount)) + (x + 1);
+			int d = ((z + 1) * (wVertexCount)) + x;
+			m->indices.emplace_back(a);
+			m->indices.emplace_back(c);
+			m->indices.emplace_back(b);
+			m->indices.emplace_back(c);
+			m->indices.emplace_back(a);
+			m->indices.emplace_back(d);
+		}
+	}
+
+	m->AddSubMesh(0, (wVertexCount - 1) * (hVertexCount - 1) * 6, 0);
+	m->CalculateNormals();
+	m->CalculateTangents();
+
+	m->UploadToGPU(renderer);
+	return UniqueVulkanMesh(m);
+}
+
+UniqueVulkanMesh NCL::Rendering::VulkanMesh::GenerateQuad(RendererBase* renderer) {
+	VulkanMesh* quadMesh = new VulkanMesh();
+	quadMesh->SetVertexPositions({ Vector3(-1,-1,0), Vector3(1,-1,0), Vector3(1,1,0), Vector3(-1,1,0) });
+	quadMesh->SetVertexTextureCoords({ Vector2(0,0), Vector2(1,0), Vector2(1, 1), Vector2(0, 1) });
+	quadMesh->SetVertexIndices({ 0,1,3,2 });
+	quadMesh->SetDebugName("Fullscreen Quad");
+	quadMesh->SetPrimitiveType(NCL::GeometryPrimitive::TriangleStrip);
+	quadMesh->UploadToGPU(renderer);
+
+	return UniqueVulkanMesh(quadMesh);
+}
+
 void VulkanMesh::UploadToGPU(RendererBase* r)  {
 	if (!ValidateMeshData()) {
 		return;

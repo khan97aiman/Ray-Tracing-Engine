@@ -110,6 +110,9 @@ include_directories("../GameEngine/WindowingAndInput/")
 include_directories("../GameEngine/WindowingAndInput/Win32/")
 include_directories("../GameEngine/Scene/")
 
+if(GRAPHICS_API STREQUAL "VULKAN")
+    target_link_libraries(${PROJECT_NAME} LINK_PUBLIC VulkanRendering)
+endif()
 
 set(ADDITIONAL_LIBRARY_DEPENDENCIES
     "GameEngine"

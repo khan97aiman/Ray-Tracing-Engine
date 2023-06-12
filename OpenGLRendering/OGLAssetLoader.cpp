@@ -8,7 +8,7 @@
 using namespace NCL;
 using namespace Assets;
 	
-OGLAssetLoader::OGLAssetLoader() {
+OGLAssetLoader::OGLAssetLoader(RendererBase* renderer) : AssetLoader(renderer) {
 	TextureLoader::RegisterAPILoadFunction(OGLTexture::RGBATextureFromFilename);
 }
 

@@ -2,6 +2,7 @@
 #include <RendererBase.h>
 #include <AssetLoader.h>
 #include "PlayerController.h"
+#include "PlayerControllers.h"
 #include <GuiObject.h>
 
 namespace NCL {
@@ -11,8 +12,11 @@ namespace NCL {
 			Configurations() {
 				// Determine which rendering API is used
 				#ifdef VULKAN
-						//guiFactory =  new ImGuiFactory_VulkanWin32();
-				#endif
+					guiFactory = new ImGuiFactory_VulkanWin32();
+					rendererFactory = new VulkanSampleGameRendererFactory();
+					assetLoaderFactory = new Assets::VulkanAssetLoaderFactory();
+					playerControllerFactory = new Win32PlayerControllerFactory();
+				#endif 
 				#ifdef OPENGL3
 						guiFactory = new ImGuiFactory_OpenGL3Win32();
 						rendererFactory = new OGLSampleGameRendererFactory();

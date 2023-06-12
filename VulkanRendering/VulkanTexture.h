@@ -43,6 +43,7 @@ namespace NCL::Rendering {
 		}
 
 		~VulkanTexture();
+		int index;
 
 	protected:
 

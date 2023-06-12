@@ -19,6 +19,7 @@ namespace NCL::CSC8599 {
 		virtual GameWorld* GetWorld() const { return nullptr; }
 		virtual reactphysics3d::PhysicsWorld* GetPhysicsWorld() const { return nullptr; }
 		virtual void OperateOnCameras(CameraFunc f) {}
+		virtual Camera* GetMainCamera() { return nullptr; }
 	protected:
 		RenderObject* renderObject = NULL;
 	};

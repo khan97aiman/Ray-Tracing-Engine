@@ -13,6 +13,7 @@ https://research.ncl.ac.uk/game/
 #include "MeshGeometry.h"
 #include "MeshMaterial.h"
 #include "TextureLoader.h"
+#include "RendererBase.h"
 
 namespace NCL::Assets {
 	using namespace Rendering;
@@ -22,6 +23,7 @@ namespace NCL::Assets {
 	};
 	class AssetLoader {
 	public:
+		AssetLoader(RendererBase* r) { renderer = r; }
 		virtual TextureBase* LoadTexture(const std::string& name) { return TextureLoader::LoadAPITexture(name); }
 		virtual MeshGeometry* LoadMesh(const std::string& name)												= 0;
 		virtual MeshGeometry* LoadMesh(const MeshType& meshType)										= 0;
@@ -34,11 +36,13 @@ namespace NCL::Assets {
 			return meshMat;
 		}
 		virtual ~AssetLoader() {}
+	protected:
+		RendererBase* renderer = nullptr;
 	};
 
 	class AssetLoaderFactory {
 	public:
 		virtual ~AssetLoaderFactory() {}
-		virtual AssetLoader* CreateAssetLoader() = 0;
+		virtual AssetLoader* CreateAssetLoader(RendererBase* renderer) = 0;
 	};
 }

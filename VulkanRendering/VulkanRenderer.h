@@ -23,6 +23,10 @@ License: MIT (see LICENSE file at the top of the source tree)
 
 using std::string;
 
+namespace NCL::Assets {
+	class VulkanAssetLoader;
+}
+
 namespace NCL::Rendering {
 	class VulkanMesh;
 	class VulkanShader;
@@ -51,6 +55,7 @@ namespace NCL::Rendering {
 		friend class VulkanDescriptorSetLayoutBuilder;
 		friend class VulkanRenderPassBuilder;
 		friend class VulkanBVHBuilder;
+		friend class NCL::Assets::VulkanAssetLoader;
 	public:
 		VulkanRenderer(Window& window, VulkanInitInfo info = VulkanInitInfo());
 		~VulkanRenderer();
@@ -61,6 +66,8 @@ namespace NCL::Rendering {
 
 	protected:
 		void OnWindowResize(int w, int h)	override;
+		virtual void WriteTextureToDescriptorSet(VulkanTexture* t) = 0;
+
 		void BeginFrame()		override;
 		void EndFrame()			override;
 		void SwapBuffers()		override;
@@ -187,5 +194,13 @@ namespace NCL::Rendering {
 		*/
 		vk::PhysicalDeviceRayTracingPipelinePropertiesKHR	rayPipelineProperties;
 		vk::PhysicalDeviceAccelerationStructureFeaturesKHR	rayAccelFeatures;
+	};
+
+	// Concrete factory for creating OpenGL renderer
+	class VulkanRendererFactory : public RendererFactory {
+	public:
+		RendererBase* CreateRenderer(Window& w) override {
+			return nullptr;
+		}
 	};
 }

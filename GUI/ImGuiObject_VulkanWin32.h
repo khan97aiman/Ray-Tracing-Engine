@@ -1,40 +1,19 @@
 #pragma once
-#include <GuiInterface.h>
+#include "ImGuiObject.h"
 
 namespace NCL {
-	/*class ImGuiInterface : public GuiInterface {
+	class ImGuiObject_VulkanWin32 : public ImGuiObject {
 	public:
-		virtual void Init() = 0;
-		virtual void ProcessEvents() = 0;
-		virtual void Render() = 0;
-	};*/
-
-	class ImGuiInterface_VulkanWin32 : public GuiInterface {
-	public:
-		virtual void Init() override;
+		ImGuiObject_VulkanWin32();
 		virtual void ProcessEvents() override;
-		virtual void Render() override;
+		virtual void Render(std::function<void()> windowFunc) override;
+		virtual ~ImGuiObject_VulkanWin32() override;
 	};
 
-	class ImGuiInterface_OpenGl3Win32 : public GuiInterface {
+	class ImGuiFactory_VulkanWin32 : public GuiFactory {
 	public:
-		virtual void Init() override;
-		virtual void ProcessEvents() override;
-		virtual void Render() override;
-	};
-
-	class ImGuiFactory : GuiFactory {
-	public:
-		virtual GuiInterface* CeateGuiInterface() override {
-#ifdef WIN32
-	#if GRAPHICS_API == VULKAN
-			return new ImGuiInterface_VulkanWin32();
-	#endif
-
-	#if GRAPHICS_API == OPENGL3
-			return new ImGuiInterface_OpenGl3Win32();
-	#endif
-#endif // WIN32
+		virtual GuiObject* CeateGuiObject() override {
+			return new ImGuiObject_VulkanWin32();
 		}
 	};
 }

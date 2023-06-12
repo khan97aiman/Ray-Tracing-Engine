@@ -21,6 +21,7 @@ VulkanTexture::VulkanTexture() {
 	height		= 0;
 	mipCount	= 0;
 	layerCount	= 0;
+	index		= 0;
 	format		= vk::Format::eUndefined;
 }
 

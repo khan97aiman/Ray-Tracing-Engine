@@ -25,6 +25,7 @@ namespace NCL::Rendering {
 	class RendererBase {
 	public:
 		friend class NCL::Window;
+		friend class AssetLoader;
 
 		RendererBase(Window& w);
 		virtual ~RendererBase();

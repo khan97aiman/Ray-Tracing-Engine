@@ -5,7 +5,7 @@
 namespace NCL::Assets {
 	class OGLAssetLoader : public AssetLoader {
 	public:
-		OGLAssetLoader();
+		OGLAssetLoader(RendererBase* renderer);
 		virtual MeshGeometry* LoadMesh(const string& name);
 		virtual MeshGeometry* LoadMesh(const MeshType& meshType);
 		virtual ShaderBase*	LoadShader(const string& vertex, const string& fragment);
@@ -16,8 +16,8 @@ namespace NCL::Assets {
 	// Concrete factory for creating OpenGL Asset Loader
 	class OGLAssetLoaderFactory : public AssetLoaderFactory {
 	public:
-		AssetLoader* CreateAssetLoader() override {
-			return new OGLAssetLoader();
+		AssetLoader* CreateAssetLoader(RendererBase* renderer) override {
+			return new OGLAssetLoader(renderer);
 		}
 	};
 

@@ -21,7 +21,7 @@ namespace NCL {
 			virtual GameWorld* GetWorld() const { return world; }
 			virtual reactphysics3d::PhysicsWorld* GetPhysicsWorld() const override { return physicsWorld; }
 			virtual void OperateOnCameras(CameraFunc f);
-
+			virtual Camera* GetMainCamera() override;
 		protected:
 			virtual void InitWorld();
 			Player* CreatePlayer(Vector3 position);

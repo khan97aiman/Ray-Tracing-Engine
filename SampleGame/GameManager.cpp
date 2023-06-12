@@ -9,7 +9,7 @@ Configurations GameManager::sConfig = Configurations();
 
 GameManager::GameManager(Window* window) {
 	renderer = sConfig.rendererFactory->CreateRenderer(*window);
-	assetLoader = sConfig.assetLoaderFactory->CreateAssetLoader();
+	assetLoader = sConfig.assetLoaderFactory->CreateAssetLoader(renderer);
 	guiObject = sConfig.guiFactory->CeateGuiObject();
 	gameAssets = new SampleGameAssets(assetLoader);
 	screenManager = new ScreenManager(gameAssets, guiObject);

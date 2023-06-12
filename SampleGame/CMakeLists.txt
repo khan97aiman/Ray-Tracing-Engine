@@ -66,6 +66,8 @@ source_group("Player" FILES ${Player})
 
 if(GRAPHICS_API STREQUAL "VULKAN")
     set(Renderers
+    "./Renderers/VulkanSampleGameRenderer.h"
+    "./Renderers/VulkanSampleGameRenderer.cpp"
     )
 elseif(GRAPHICS_API STREQUAL "OPENGL3")
     set(Renderers
@@ -141,9 +143,9 @@ target_precompile_headers(${PROJECT_NAME} PRIVATE
 
 if(GRAPHICS_API STREQUAL "VULKAN")
     target_precompile_headers(${PROJECT_NAME} PRIVATE
-       # "../OpenGLRendering/OGLAssetLoader.h"
-       # "../OpenGLRendering/OGLRenderer.h"
-        "./GUI/ImGuiObject_VulkanWin32.h"
+       "../VulkanRendering/VulkanAssetLoader.h"
+       "./Renderers/VulkanSampleGameRenderer.h"
+       "../GUI/ImGuiObject_VulkanWin32.h"
     )
 elseif(GRAPHICS_API STREQUAL "OPENGL3")
     target_precompile_headers(${PROJECT_NAME} PRIVATE
@@ -151,7 +153,6 @@ elseif(GRAPHICS_API STREQUAL "OPENGL3")
         "./Renderers/OGLSampleGameRenderer.h"
         "../GUI/ImGuiObject_OpenGL3Win32.h"
     )
-    #add specific rendererer here
 endif()
 
 

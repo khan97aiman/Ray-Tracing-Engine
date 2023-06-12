@@ -8,6 +8,7 @@ License: MIT (see LICENSE file at the top of the source tree)
 #pragma once
 #include "MeshGeometry.h"
 #include "VulkanBuffers.h"
+#include "SmartTypes.h"
 
 namespace NCL::Rendering {
 	class VulkanMesh : public MeshGeometry {
@@ -16,6 +17,11 @@ namespace NCL::Rendering {
 		VulkanMesh();
 		VulkanMesh(const std::string& filename);
 		~VulkanMesh();
+
+		static UniqueVulkanMesh GenerateFlatMesh(RendererBase* renderer, int hVertexCount = 128, int wVertexCount = 128);
+		static UniqueVulkanMesh GenerateHeightMap(RendererBase* renderer, const std::string& filename, int heightMultiplier = 10);
+
+		static UniqueVulkanMesh GenerateQuad(RendererBase* renderer);
 
 		const vk::PipelineVertexInputStateCreateInfo& GetVertexInputState() const {
 			return vertexInputState;

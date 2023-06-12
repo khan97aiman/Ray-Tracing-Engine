@@ -38,6 +38,10 @@ void SampleGame::OperateOnCameras(CameraFunc f) {
 	}
 }
 
+Camera* SampleGame::GetMainCamera() {
+	return activeCameras[0];
+}
+
 void SampleGame::InitWorld() {
 	world->ClearAndErase();
 

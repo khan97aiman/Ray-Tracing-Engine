@@ -5,10 +5,12 @@
 #include "MeshMaterial.h"
 #include "MeshGeometry.h"
 #include "ShaderBase.h"
-#include <AssetLoader.h>
 #include <unordered_map>
 
 namespace NCL {
+	namespace Assets {
+		class AssetLoader;
+	}
 	using namespace Rendering;
 	class GameAssets {
 	public:

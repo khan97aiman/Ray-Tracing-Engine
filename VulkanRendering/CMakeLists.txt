@@ -21,13 +21,14 @@ set(Header_Files
     "VulkanShader.h"
     "VulkanShaderBuilder.h"
     "VulkanTexture.h"
-	"SmartTypes.h"
+    "SmartTypes.h"
+    "VulkanAssetLoader.h"
 )
 source_group("Header Files" FILES ${Header_Files})
 
 set(Source_Files
     "Precompiled.cpp"
-	"VulkanUtils.cpp"
+    "VulkanUtils.cpp"
     "VulkanBuffers.cpp"
     "VulkanBVHBuilder.cpp"
     "VulkanCompute.cpp"
@@ -42,6 +43,7 @@ set(Source_Files
     "VulkanShader.cpp"
     "VulkanShaderBuilder.cpp"
     "VulkanTexture.cpp"
+    "VulkanAssetLoader.cpp"
 )
 source_group("Source Files" FILES ${Source_Files})
 
